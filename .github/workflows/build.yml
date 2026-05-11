@@ -2,6 +2,8 @@ name: Build LaTeX
 
 on:
   push:
+    branches:
+      - main
     paths:
       - "**/*.tex"
       - "**/*.bib"
