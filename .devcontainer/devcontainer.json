@@ -1,0 +1,17 @@
+{
+  "name": "master-thesis",
+  "image": "ghcr.io/tpu-kanglabs/texlive:latest",
+  // "build": {
+  //   "dockerfile": "Dockerfile"
+  // },
+  "remoteUser": "texlive",
+  "postStartCommand": "npm ci",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "James-Yu.latex-workshop",
+        "3w36zj6.textlint"
+      ]
+    }
+  }
+}
