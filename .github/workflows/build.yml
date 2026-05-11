@@ -1,0 +1,62 @@
+name: Build LaTeX
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "**/*.tex"
+      - "**/*.bib"
+      - ".latexmkrc"
+  pull_request:
+    paths:
+      - "**/*.tex"
+      - "**/*.bib"
+      - ".latexmkrc"
+
+permissions:
+  contents: read
+  packages: read
+
+jobs:
+  build-thesis:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/tpu-kanglabs/texlive:latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/biber
+          key: biber-thesis-${{ hashFiles('bibliography/*.bib') }}
+          restore-keys: biber-thesis-
+
+      - name: Build thesis
+        run: latexmk thesis.tex
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: thesis-pdf
+          path: out/thesis.pdf
+
+  build-abstract:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/tpu-kanglabs/texlive:latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/biber
+          key: biber-abstract-${{ hashFiles('bibliography/*.bib') }}
+          restore-keys: biber-abstract-
+
+      - name: Build abstract
+        run: latexmk abstract.tex
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: abstract-pdf
+          path: out/abstract.pdf

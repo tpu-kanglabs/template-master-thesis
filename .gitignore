@@ -1,0 +1,16 @@
+out/
+node_modules/
+
+# LaTeX intermediate files
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.log
+*.lot
+*.run.xml
+*.synctex.gz
+*.toc

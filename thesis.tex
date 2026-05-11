@@ -1,0 +1,46 @@
+\documentclass[lualatex,ja=standard,a4paper,12pt]{bxjsreport}
+
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage[backend=biber,style=ieee]{biblatex}
+
+\addbibresource{bibliography/references.bib}
+
+% 論文情報（各自で修正すること）
+\newcommand{\thesistitle}{修士論文のタイトル}
+\newcommand{\authorname}{氏　名}
+\newcommand{\supervisorname}{指導教員　教授}
+\newcommand{\submityear}{2026}
+\newcommand{\submitmonth}{3}
+
+\begin{document}
+
+\begin{titlepage}
+  \centering
+  \vspace*{3cm}
+  {\LARGE \thesistitle \par}
+  \vspace{4cm}
+  {\large \authorname \par}
+  \vspace{1.5cm}
+  {\large 指導教員：\supervisorname \par}
+  \vspace{2cm}
+  {\large 東京工芸大学大学院 工学研究科 \par}
+  \vspace{0.5cm}
+  {\large \submityear 年 \submitmonth 月 \par}
+\end{titlepage}
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+\include{chapters/01_introduction}
+\include{chapters/02_related_work}
+\include{chapters/03_methodology}
+\include{chapters/04_experiments}
+\include{chapters/05_conclusion}
+
+\printbibliography[title=参考文献]
+
+\end{document}
