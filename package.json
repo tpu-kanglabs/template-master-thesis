@@ -1,0 +1,24 @@
+{
+  "name": "template-master-thesis",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "textlint \"**/*.{md,tex}\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.23.0",
+  "devDependencies": {
+    "@textlint-ja/textlint-rule-preset-ai-writing": "^1.7.0",
+    "textlint": "^15.7.1",
+    "textlint-filter-rule-allowlist": "^4.0.0",
+    "textlint-filter-rule-comments": "^1.3.0",
+    "textlint-plugin-latex2e": "^1.2.1",
+    "textlint-rule-preset-ja-technical-writing": "^12.0.2",
+    "textlint-rule-prh": "^6.1.0"
+  }
+}

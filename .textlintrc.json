@@ -1,0 +1,23 @@
+{
+  "plugins": {},
+  "filters": {
+    "comments": true,
+    "allowlist": {
+      "allow": []
+    }
+  },
+  "rules": {
+    "preset-ja-technical-writing": {
+      "ja-no-mixed-period": {
+        "periodMark": "．"
+      },
+      "no-mix-dearu-desumasu": {
+        "preferInHeader": "",
+        "preferInBody": "である",
+        "preferInList": "である",
+        "strict": false
+      },
+      "@textlint-ja/preset-ai-writing": true
+    }
+  }
+}

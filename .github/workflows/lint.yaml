@@ -1,0 +1,25 @@
+name: lint
+on:
+  pull_request:
+    paths:
+      - '**/*.md'
+      - '**/*.tex'
+      - .github/workflows/lint.yaml
+  push:
+    branches:
+      - main
+    paths:
+      - '**/*.md'
+      - '**/*.tex'
+      - .github/workflows/lint.yaml
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Set up tools
+        uses: jdx/mise-action@v4
+      - name: Install dependencies
+        run: pnpm i --frozen-lockfile
+      - name: Run textlint
+        run: pnpm lint
