@@ -5,7 +5,8 @@
   //   "dockerfile": "Dockerfile"
   // },
   "remoteUser": "texlive",
-  "postStartCommand": "npm ci",
+  "postCreateCommand": "mise trust",
+  "postStartCommand": "pnpm i --frozen-lockfile",
   "customizations": {
     "vscode": {
       "extensions": [
