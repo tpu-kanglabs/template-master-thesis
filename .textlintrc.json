@@ -1,5 +1,7 @@
 {
-  "plugins": {},
+  "plugins": {
+    "latex2e": true
+  },
   "filters": {
     "comments": true,
     "allowlist": {
