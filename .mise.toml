@@ -7,5 +7,10 @@ description = "Run ChkTeX on all tracked .tex files"
 run = "git ls-files -z '*.tex' | xargs -0r chktex -wall -n1 -n19 -n21 -n22 -n30 -e16 -q"
 
 [tasks.latexindent]
-description = "Check formatting of all tracked .tex files with latexindent"
-run = "git ls-files -z '*.tex' | xargs -0r latexindent -s --check"
+description = "Format all tracked .tex files with latexindent; fail if any file was changed"
+run = """
+#!/usr/bin/env bash
+set -e
+git ls-files -z '*.tex' | xargs -0r -I{} latexindent -s -w -c /tmp/ {}
+git diff --exit-code -- '*.tex'
+"""
