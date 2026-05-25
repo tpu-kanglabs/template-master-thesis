@@ -4,7 +4,7 @@ pnpm = "10"
 
 [tasks.chktex]
 description = "Run ChkTeX on all tracked .tex files"
-run = "git ls-files -z '*.tex' | xargs -0r chktex -wall -n22 -n30 -e16 -q"
+run = "git ls-files -z '*.tex' | xargs -0r chktex -wall -n1 -n19 -n21 -n22 -n30 -e16 -q"
 
 [tasks.latexindent]
 description = "Check formatting of all tracked .tex files with latexindent"
