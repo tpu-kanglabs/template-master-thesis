@@ -1,0 +1,32 @@
+{
+  $schema: "https://docs.renovatebot.com/renovate-schema.json",
+  extends: [
+    "config:recommended",
+    "schedule:monthly",
+  ],
+  timezone: "Asia/Tokyo",
+  packageRules: [
+    // Node ランタイム: mise の node/pnpm と package.json の packageManager を 1 PR に集約
+    {
+      matchManagers: ["mise"],
+      groupName: "node runtime",
+    },
+    {
+      matchManagers: ["npm"],
+      matchDepTypes: ["packageManager"],
+      groupName: "node runtime",
+    },
+    // npm 依存 (textlint 系) を 1 PR に集約
+    {
+      matchManagers: ["npm"],
+      matchDepTypes: ["dependencies", "devDependencies"],
+      groupName: "npm dependencies",
+    },
+    // Docker は digest 更新を無効化し、タグ更新のみ許可
+    {
+      matchDatasources: ["docker"],
+      matchUpdateTypes: ["digest"],
+      enabled: false,
+    },
+  ],
+}

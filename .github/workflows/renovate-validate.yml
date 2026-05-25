@@ -1,0 +1,21 @@
+name: Validate Renovate config
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/renovate.json5
+      - .github/workflows/renovate-validate.yml
+  pull_request:
+    paths:
+      - .github/renovate.json5
+      - .github/workflows/renovate-validate.yml
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: jdx/mise-action@v4
+      - run: pnpm dlx --package renovate renovate-config-validator
