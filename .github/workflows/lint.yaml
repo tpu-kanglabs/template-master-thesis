@@ -33,6 +33,8 @@ jobs:
       image: ghcr.io/tpu-kanglabs/texlive:latest
     steps:
       - uses: actions/checkout@v4
+      - name: Configure git safe directory
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - name: Trust mise config
         run: mise trust
       - name: Run ChkTeX
