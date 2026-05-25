@@ -11,6 +11,6 @@ description = "Format all tracked .tex files with latexindent; fail if any file 
 run = """
 #!/usr/bin/env bash
 set -e
-git ls-files -z '*.tex' | xargs -0r -I{} latexindent -s -w -c /tmp/ {}
+git ls-files -z '*.tex' | xargs -0r -I{} latexindent -y="defaultIndent: '  '" -s -w -c /tmp/ {}
 git diff --exit-code -- '*.tex'
 """

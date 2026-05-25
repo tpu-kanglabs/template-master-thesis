@@ -21,7 +21,7 @@
   "latex-workshop.chktex.enabled": true,
   "latex-workshop.chktex.args.active": ["-wall", "-n1", "-n19", "-n21", "-n22", "-n30", "-e16", "-q"],
   "latex-workshop.formatting.latex": "latexindent",
-  "latex-workshop.formatting.latexindent.args": ["-c", "%DIR%/", "%TMPFILE%"],
+  "latex-workshop.formatting.latexindent.args": ["-c", "%DIR%/", "-y=defaultIndent: '  '", "%TMPFILE%"],
   "[latex]": {
     "editor.formatOnSave": true
   }
