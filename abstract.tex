@@ -1,10 +1,12 @@
-\documentclass[lualatex,ja=standard,a4paper,12pt]{bxjsarticle}
+\documentclass[lualatex,paper=a4paper,fontsize=12pt]{jlreq}
 
 \usepackage{amsmath,amssymb}
 \usepackage{hyperref}
 \usepackage[backend=biber,style=ieee]{biblatex}
 
 \addbibresource{bibliography/references.bib}
+
+\jlreqsetup{abstract_with_maketitle=true}
 
 \input{meta}
 
@@ -14,8 +16,6 @@
 
 \begin{document}
 
-\maketitle
-
 \begin{abstract}
 ここに論文の概要を記述してください。
 概要は研究の背景・目的・手法・結果・結論を簡潔にまとめたものである．
@@ -24,5 +24,7 @@
 本研究では，〇〇という問題に対し，〇〇の手法を提案する。
 実験により，提案手法が既存手法に比べて〇〇の点で優れることを示した．
 \end{abstract}
+
+\maketitle
 
 \end{document}
