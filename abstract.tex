@@ -1,4 +1,4 @@
-\documentclass[lualatex,ja=standard,a4paper,12pt]{bxjsarticle}
+\documentclass[lualatex,paper=a4paper,fontsize=12pt]{jlreq}
 
 \usepackage{amsmath,amssymb}
 \usepackage{hyperref}
@@ -6,13 +6,15 @@
 
 \addbibresource{bibliography/references.bib}
 
-\title{修士論文のタイトル\\[1em]\large 概　要}
-\author{氏　名}
-\date{2026年3月}
+\jlreqsetup{abstract_with_maketitle=true}
+
+\input{meta}
+
+\title{\thesistitle\\[1em]\large 概　要}
+\author{\authorname}
+\date{\submityear 年 \submitmonth 月}
 
 \begin{document}
-
-\maketitle
 
 \begin{abstract}
 ここに論文の概要を記述してください。
@@ -22,5 +24,7 @@
 本研究では，〇〇という問題に対し，〇〇の手法を提案する。
 実験により，提案手法が既存手法に比べて〇〇の点で優れることを示した．
 \end{abstract}
+
+\maketitle
 
 \end{document}

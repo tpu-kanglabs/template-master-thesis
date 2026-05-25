@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-This is a LaTeX template for master's theses at Tokyo Polytechnic University (東京工芸大学大学院). It uses LuaLaTeX with the `bxjsreport` document class for Japanese typesetting, and `biblatex`+`biber` with IEEE style for references.
+This is a LaTeX template for master's theses at Tokyo Polytechnic University (東京工芸大学大学院). It uses LuaLaTeX with the `jlreq` document class for Japanese typesetting (W3C JLReq準拠), and `biblatex`+`biber` with IEEE style for references.
 
 ## Build Commands
 
@@ -20,8 +20,9 @@ Output PDFs are written to the `out/` directory (configured in `.latexmkrc`). Th
 
 ## Document Structure
 
-- `thesis.tex` — root document; defines thesis metadata macros (`\thesistitle`, `\authorname`, `\supervisorname`, `\submityear`, `\submitmonth`) that must be updated for each thesis
-- `abstract.tex` — standalone abstract document (uses `bxjsarticle`); title/author/date are hardcoded here and must also be updated
+- `meta.tex` — **論文メタデータの単一定義箇所**。`\thesistitle`, `\authorname`, `\supervisorname`, `\submityear`, `\submitmonth` を定義する。各論文で変更が必要な箇所はここだけ。`thesis.tex` と `abstract.tex` の両方から `\input{meta}` で読み込まれる
+- `thesis.tex` — root document; `\input{meta}` でメタデータを読み込み、表紙・本文・参考文献を構成する
+- `abstract.tex` — standalone abstract document; `\input{meta}` でメタデータを参照するため、`meta.tex` を更新すれば自動的に同期される
 - `chapters/` — one `.tex` file per chapter, included via `\include{}` in `thesis.tex`; each file carries a `% !TEX root = ../thesis.tex` magic comment
 - `bibliography/references.bib` — BibTeX database; contains a sample entry to illustrate the format
 
@@ -39,7 +40,7 @@ A separate workflow (`.github/workflows/docker.yml`) rebuilds and pushes the `gh
 
 ## Key Conventions
 
-- **Japanese typesetting**: document classes are `bxjsreport` (thesis) and `bxjsarticle` (abstract) with `lualatex,ja=standard` options — do not switch to `pdflatex` or `xelatex`.
+- **Japanese typesetting**: document class is `jlreq` with `lualatex` engine option — thesis uses `report` option (enables `\chapter`), abstract uses article-mode (default). Do not switch to `pdflatex` or `xelatex`. Layout and heading customization should use `\jlreqsetup{...}`.
 - **Bibliography**: always use `biblatex` + `biber` (not `natbib`/`bibtex`). The style is `ieee`.
 - **New chapters**: add a file under `chapters/` and add a corresponding `\include{chapters/NN_name}` line in `thesis.tex`.
 - **Output directory**: all build artifacts go to `out/` — this directory is gitignored. Intermediate LaTeX files (`.aux`, `.log`, etc.) are also gitignored.
