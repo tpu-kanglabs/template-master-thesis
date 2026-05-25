@@ -23,3 +23,19 @@ jobs:
         run: pnpm i --frozen-lockfile
       - name: Run textlint
         run: pnpm lint
+
+  tex-lint:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
+    container:
+      image: ghcr.io/tpu-kanglabs/texlive:latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Trust mise config
+        run: mise trust
+      - name: Run ChkTeX
+        run: mise run chktex
+      - name: Check formatting
+        run: mise run latexindent
