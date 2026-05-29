@@ -1,0 +1,37 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{tpu-biblatex}[2026/05/29 v1.0 TPU biblatex IEEE customizations]
+
+%--- biblatex with IEEE style ---------------------------------------------------
+\RequirePackage[
+  backend=biber,
+  style=ieee,
+  sorting=none,
+  sortcites=true,
+]{biblatex}
+
+%--- (1) \cite{a,b} → [1,2]: collapse into a single bracketed list -------------
+\DeclareDelimFormat{multicitedelim}{\addcomma}
+
+\makeatletter
+\DeclareCiteCommand{\cite}[\mkbibbrackets]
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}\usebibmacro{cite}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+\makeatother
+
+%--- (2) Japanese entries (keywords = {ja}): use Japanese name separator --------
+\AtEveryBibitem{%
+  \ifkeyword{ja}{%
+    \DeclareDelimFormat{multinamedelim}{，}%
+    \DeclareDelimFormat{finalnamedelim}{，}%
+  }{}%
+}
+
+%--- (3) Remove quotation marks around article/inproceedings/incollection titles
+\DeclareFieldFormat[article,inproceedings,incollection]{title}{#1\isdot}
+
+%--- (4) Convenience macro for bibliography section ----------------------------
+\newcommand{\printreferences}{%
+  \printbibliography[title={参考文献}]%
+}
