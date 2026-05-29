@@ -3,19 +3,29 @@
     {
       "name": "latexmk",
       "command": "latexmk",
-      "args": ["%DOC%"],
+      "args": [
+        "%DOC%"
+      ],
       "env": {}
     }
   ],
   "latex-workshop.latex.recipes": [
     {
       "name": "latexmk",
-      "tools": ["latexmk"]
+      "tools": [
+        "latexmk"
+      ]
     }
   ],
   "latex-workshop.latex.outDir": "%DIR%/out",
   "latex-workshop.latex.autoBuild.run": "onSave",
   "latex-workshop.synctex.afterBuild.enabled": true,
   "latex-workshop.view.pdf.viewer": "tab",
-  "latex-workshop.latex.autoClean.run": "never"
+  "latex-workshop.latex.autoClean.run": "never",
+  "files.exclude": {
+    "LICENSE": true,
+    "pnpm-lock.yaml": true,
+    ".mise.toml": true,
+    "node_modules": true,
+  }
 }

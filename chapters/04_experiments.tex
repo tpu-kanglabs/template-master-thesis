@@ -1,25 +1,27 @@
 % !TEX root = ../thesis.tex
 \chapter{実験}
 
-\section{実験設定}
+\section{セクション}
 
-\subsection{データセット}
+\subsection{サブセクション}
 
-使用したデータセットを記述してください．
+表を挿入する場合は以下のように記述する．
 
-\subsection{評価指標}
+\begin{table}[ht]
+  \centering
+  \small
+  \caption{表の例}
+  \begin{tabular}{c|c|c|c}
+    \hline
+    A & B & C & D \\
+    \hline
+    1 & 2  & 3  & 4  \\
+    5 & 6  & 7  & 8  \\
+    9 & 10 & 11 & 12 \\
+    13 & 14 & 15 & 16 \\
+    \hline
+  \end{tabular}
+  \label{tab:example}
+\end{table}
 
-評価に用いた指標を記述してください．
-
-\subsection{比較手法}
-
-比較対象とした手法を記述してください．
-
-\section{実験結果}
-
-実験結果を記述してください。
-表や図を用いて結果を示す．
-
-\section{考察}
-
-実験結果に対する考察を記述してください．
+表~\ref{tab:example}に示すように，〇〇である．

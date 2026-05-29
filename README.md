@@ -37,4 +37,3 @@ latexmk thesis.tex
 # textlintによる文書のLint
 pnpm lint
 ```
-

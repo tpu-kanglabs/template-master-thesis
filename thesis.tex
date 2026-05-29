@@ -1,41 +1,33 @@
-\documentclass[lualatex,report,paper=a4paper,fontsize=12pt]{jlreq}
-
-\usepackage{graphicx}
-\usepackage{amsmath,amssymb}
-\usepackage{booktabs}
-\usepackage{hyperref}
-\usepackage[backend=biber,style=ieee]{biblatex}
+\documentclass{tpu-thesis}
 
 \addbibresource{bibliography/references.bib}
-
 \input{meta}
 
 \begin{document}
 
-\begin{titlepage}
-  \centering
-  \vspace*{3cm}
-  {\LARGE \thesistitle \par}
-  \vspace{4cm}
-  {\large \authorname \par}
-  \vspace{1.5cm}
-  {\large 指導教員：\supervisorname \par}
-  \vspace{2cm}
-  {\large 東京工芸大学大学院 工学研究科 \par}
-  \vspace{0.5cm}
-  {\large \submityear 年 \submitmonth 月 \par}
-\end{titlepage}
+\maketitle
 
+\frontmatter
+\input{chapters/00_abstract_ja}
+\input{chapters/00_abstract_en}
+\clearpage
 \tableofcontents
-\listoffigures
-\listoftables
 
-\include{chapters/01_introduction}
-\include{chapters/02_related_work}
-\include{chapters/03_methodology}
-\include{chapters/04_experiments}
-\include{chapters/05_conclusion}
+\mainmatter
+\input{chapters/01_introduction}
+\input{chapters/02_related_work}
+\input{chapters/03_methodology}
+\input{chapters/04_experiments}
+\input{chapters/05_conclusion}
 
+\backmatter
+% textlint-disable ja-technical-writing/no-mix-dearu-desumasu
+\begin{acknowledgements}
+本研究の遂行にあたり，指導教員として終始多大なご指導を賜った，指導 教員 教授に深く感謝致します．
+\end{acknowledgements}
+% textlint-enable ja-technical-writing/no-mix-dearu-desumasu
+
+\clearpage
 \printbibliography[title=参考文献]
 
 \end{document}
