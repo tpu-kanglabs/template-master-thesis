@@ -23,36 +23,83 @@ on:
 permissions:
   contents: read
   packages: read
+  pull-requests: write
 
 jobs:
-  build:
+  build-thesis:
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/tpu-kanglabs/texlive:latest
-    strategy:
-      matrix:
-        document:
-          - name: thesis
-            file: thesis.tex
-            artifact: thesis-pdf
-            output: out/thesis.pdf
-          - name: abstract
-            file: abstract.tex
-            artifact: abstract-pdf
-            output: out/abstract.pdf
+    outputs:
+      artifact-url: ${{ steps.upload.outputs.artifact-url }}
     steps:
       - uses: actions/checkout@v4
 
       - uses: actions/cache@v4
         with:
           path: ~/.cache/biber
-          key: biber-${{ matrix.document.name }}-${{ hashFiles('bibliography/*.bib') }}
-          restore-keys: biber-${{ matrix.document.name }}-
+          key: biber-thesis-${{ hashFiles('bibliography/*.bib') }}
+          restore-keys: biber-thesis-
 
-      - name: Build ${{ matrix.document.name }}
-        run: latexmk ${{ matrix.document.file }}
+      - name: Build thesis
+        run: latexmk thesis.tex
 
       - uses: actions/upload-artifact@v4
+        id: upload
         with:
-          name: ${{ matrix.document.artifact }}
-          path: ${{ matrix.document.output }}
+          name: thesis-pdf
+          path: out/thesis.pdf
+
+  build-abstract:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/tpu-kanglabs/texlive:latest
+    outputs:
+      artifact-url: ${{ steps.upload.outputs.artifact-url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/biber
+          key: biber-abstract-${{ hashFiles('bibliography/*.bib') }}
+          restore-keys: biber-abstract-
+
+      - name: Build abstract
+        run: latexmk abstract.tex
+
+      - uses: actions/upload-artifact@v4
+        id: upload
+        with:
+          name: abstract-pdf
+          path: out/abstract.pdf
+
+  comment:
+    needs: [build-thesis, build-abstract]
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Find existing comment
+        uses: peter-evans/find-comment@v3
+        id: find-comment
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: '## Build Results'
+
+      - uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-id: ${{ steps.find-comment.outputs.comment-id }}
+          edit-mode: replace
+          body: |
+            ## Build Results
+
+            | Document | Link |
+            |----------|------|
+            | Thesis   | [Download](${{ needs.build-thesis.outputs.artifact-url }}) |
+            | Abstract | [Download](${{ needs.build-abstract.outputs.artifact-url }}) |
+
+            > ⚠️ Artifacts are retained for 90 days.
