@@ -8,11 +8,31 @@
 
 \jlreqsetup{abstract_with_maketitle=true}
 
+% meta.tex は tpu-thesis.cls のセッターマクロを呼ぶ。
+% abstract.tex は tpu-thesis を使わないため、必要な値を受け取るシムを定義する。
+\newcommand{\tpu@meta@title}{修士論文のタイトル}
+\newcommand{\tpu@meta@author}{工芸 太郎}
+\newcommand{\tpu@meta@year}{2026}
+\newcommand{\tpu@meta@month}{3}
+\newcommand{\thesistitle}[1]{\renewcommand{\tpu@meta@title}{#1}}
+\newcommand{\thesistitleeng}[1]{}
+\newcommand{\authorname}[1]{\renewcommand{\tpu@meta@author}{#1}}
+\newcommand{\authornameeng}[1]{}
+\newcommand{\studentid}[1]{}
+\newcommand{\department}[1]{}
+\newcommand{\laboratory}[1]{}
+\newcommand{\supervisor}[2]{}
+\newcommand{\fiscalyear}[1]{}
+\newcommand{\submitdate}[2]{%
+  \renewcommand{\tpu@meta@year}{#1}%
+  \renewcommand{\tpu@meta@month}{#2}%
+}
+
 \input{meta}
 
-\title{\thesistitle\\[1em]\large 概　要}
-\author{\authorname}
-\date{\submityear 年 \submitmonth 月}
+\title{\tpu@meta@title\\[1em]\large 概　要}
+\author{\tpu@meta@author}
+\date{\tpu@meta@year 年 \tpu@meta@month 月}
 
 \begin{document}
 
