@@ -7,6 +7,7 @@ on:
     paths:
       - "**/*.tex"
       - "**/*.cls"
+      - "**/*.sty"
       - "**/*.bib"
       - ".latexmkrc"
       - ".github/workflows/build.yml"
@@ -14,6 +15,7 @@ on:
     paths:
       - "**/*.tex"
       - "**/*.cls"
+      - "**/*.sty"
       - "**/*.bib"
       - ".latexmkrc"
       - ".github/workflows/build.yml"

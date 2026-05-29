@@ -1,50 +1,60 @@
-\documentclass[lualatex,paper=a4paper,fontsize=12pt]{jlreq}
+% !TEX root = abstract.tex
+\documentclass{tpu-abstract}
 
-\usepackage{amsmath,amssymb}
-\usepackage{hyperref}
-\usepackage[backend=biber,style=ieee]{biblatex}
-
+% 文献データベース（thesis.tex と共有）
 \addbibresource{bibliography/references.bib}
-
-\jlreqsetup{abstract_with_maketitle=true}
-
-% meta.tex は tpu-thesis.cls のセッターマクロを呼ぶ。
-% abstract.tex は tpu-thesis を使わないため、必要な値を受け取るシムを定義する。
-\newcommand{\absTitle}{修士論文のタイトル}
-\newcommand{\absAuthor}{工芸 太郎}
-\newcommand{\absYear}{2026}
-\newcommand{\absMonth}{3}
-\newcommand{\thesistitle}[1]{\renewcommand{\absTitle}{#1}}
-\newcommand{\thesistitleeng}[1]{}
-\newcommand{\authorname}[1]{\renewcommand{\absAuthor}{#1}}
-\newcommand{\authornameeng}[1]{}
-\newcommand{\studentid}[1]{}
-\newcommand{\department}[1]{}
-\newcommand{\laboratory}[1]{}
-\newcommand{\supervisor}[2]{}
-\newcommand{\fiscalyear}[1]{}
-\newcommand{\submitdate}[2]{%
-  \renewcommand{\absYear}{#1}%
-  \renewcommand{\absMonth}{#2}%
-}
 
 \input{meta}
 
-\title{\absTitle\\[1em]\large 概　要}
-\author{\absAuthor}
-\date{\absYear 年 \absMonth 月}
-
 \begin{document}
 
-\begin{abstract}
-ここに論文の概要を記述してください。
-概要は研究の背景・目的・手法・結果・結論を簡潔にまとめたものである．
-一般的に400〜800字程度で記述する．
-
-本研究では，〇〇という問題に対し，〇〇の手法を提案する。
-実験により，提案手法が既存手法に比べて〇〇の点で優れることを示した．
-\end{abstract}
-
 \maketitle
+
+\section{研究背景と目的}
+研究の背景と動機，既存手法の課題，および本研究の目的を記述する~\cite{sample2024}．
+
+\section{提案手法}
+提案する手法の概要と主要なアイデアを記述する．図 \ref{fig:overview}に提案手法の概要を示す．
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\columnwidth]{example-image-a}
+  \caption{図の例}
+  \label{fig:overview}
+\end{figure}
+
+式は以下のように表す．
+
+\begin{equation}
+  y = f(x) + \epsilon
+\end{equation}
+
+\section{実験結果}
+実験設定と定量・定性結果を記述する．表 \ref{tab:results}に実験結果の例を示す．
+
+\begin{table}[ht]
+  \centering
+  \caption{実験結果の例}
+  \begin{tabular}{lcc}
+    \hline
+    手法 & 精度 & 処理時間 \\
+    \hline
+    提案手法 & 95\% & 0.5s \\
+    既存手法A & 90\% & 1.0s \\
+    既存手法B & 85\% & 0.8s \\
+    \hline
+  \end{tabular}
+
+  \label{tab:results}
+\end{table}
+
+\subsection{サブセクション}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
+
+\section{まとめ}
+研究の結論と今後の展望を記述する．
+
+\printreferences
 
 \end{document}

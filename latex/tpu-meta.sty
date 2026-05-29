@@ -1,0 +1,35 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{tpu-meta}[2026/05/29 v1.0 TPU thesis metadata definitions]
+
+%--- Internal storage with placeholder defaults ---------------------------------
+\newcommand{\tpu@thesistitle}{修士論文のタイトル}
+\newcommand{\tpu@thesistitleeng}{Thesis Title in English}
+\newcommand{\tpu@authorname}{工芸 太郎}
+\newcommand{\tpu@authornameeng}{Taro Kogei}
+\newcommand{\tpu@studentid}{XXXXXXX}
+\newcommand{\tpu@department}{〇〇専攻}
+\newcommand{\tpu@laboratory}{〇〇研究室}
+\newcommand{\tpu@supervisorname}{指導 教員}
+\newcommand{\tpu@supervisorrole}{教授}
+\newcommand{\tpu@fiscalyear}{2025}
+\newcommand{\tpu@submityear}{2026}
+\newcommand{\tpu@submitmonth}{3}
+
+%--- Public setters (API used in meta.tex) --------------------------------------
+% \supervisor{name}{role}: arg 1 = surname+given, arg 2 = academic title
+\newcommand{\thesistitle}[1]{\renewcommand{\tpu@thesistitle}{#1}}
+\newcommand{\thesistitleeng}[1]{\renewcommand{\tpu@thesistitleeng}{#1}}
+\newcommand{\authorname}[1]{\renewcommand{\tpu@authorname}{#1}}
+\newcommand{\authornameeng}[1]{\renewcommand{\tpu@authornameeng}{#1}}
+\newcommand{\studentid}[1]{\renewcommand{\tpu@studentid}{#1}}
+\newcommand{\department}[1]{\renewcommand{\tpu@department}{#1}}
+\newcommand{\laboratory}[1]{\renewcommand{\tpu@laboratory}{#1}}
+\newcommand{\supervisor}[2]{%
+  \renewcommand{\tpu@supervisorname}{#1}%
+  \renewcommand{\tpu@supervisorrole}{#2}%
+}
+\newcommand{\fiscalyear}[1]{\renewcommand{\tpu@fiscalyear}{#1}}
+\newcommand{\submitdate}[2]{%
+  \renewcommand{\tpu@submityear}{#1}%
+  \renewcommand{\tpu@submitmonth}{#2}%
+}
