@@ -342,3 +342,285 @@ rules:
   - expected: インターネット
     patterns:
       - ネットワーク・インターネット
+
+  # ============================================================
+  # モデルアーキテクチャ
+  # ============================================================
+  - expected: Transformer
+    patterns:
+      - transformer
+      - TRANSFORMER
+
+  - expected: BERT
+    patterns:
+      - Bert
+      - bert
+
+  - expected: GPT
+    patterns:
+      - Gpt
+      - gpt
+
+  - expected: LLaMA
+    patterns:
+      - Llama
+      - llama
+      - LLAMA
+
+  - expected: ViT
+    patterns:
+      - VIT
+      - vit
+
+  - expected: CLIP
+    patterns:
+      - Clip
+      - clip
+
+  - expected: ResNet
+    patterns:
+      - Resnet
+      - resnet
+      - RESNET
+
+  - expected: VGG
+    patterns:
+      - vgg
+      - Vgg
+
+  - expected: EfficientNet
+    patterns:
+      - efficientnet
+      - Efficientnet
+      - EFFICIENTNET
+
+  - expected: MobileNet
+    patterns:
+      - mobilenet
+      - Mobilenet
+      - MOBILENET
+
+  - expected: YOLO
+    patterns:
+      - Yolo
+      - yolo
+
+  - expected: U-Net
+    patterns:
+      - /Unet/
+      - /UNet/
+      - /unet/
+      - /u-net/
+
+  - expected: GAN
+    patterns:
+      - Gan
+      - gan
+
+  - expected: VAE
+    patterns:
+      - Vae
+      - vae
+
+  - expected: LSTM
+    patterns:
+      - Lstm
+      - lstm
+
+  - expected: GRU
+    patterns:
+      - Gru
+      - gru
+
+  - expected: Stable Diffusion
+    patterns:
+      - stable diffusion
+      - StableDiffusion
+      - stablediffusion
+
+  # ============================================================
+  # 注意機構（英語表記）
+  # ============================================================
+  - expected: Self-Attention
+    patterns:
+      - /self attention/
+      - /SelfAttention/
+      - /selfAttention/
+
+  - expected: Multi-Head Attention
+    patterns:
+      - /multi-head attention/
+      - /MultiHead Attention/
+      - /Multihead Attention/
+      - /multihead attention/
+
+  - expected: Cross-Attention
+    patterns:
+      - /cross attention/
+      - /CrossAttention/
+
+  # ============================================================
+  # 最適化アルゴリズム
+  # ============================================================
+  - expected: Adam
+    options:
+      wordBoundary: true
+    patterns:
+      - ADAM
+      - adam
+
+  - expected: AdamW
+    options:
+      wordBoundary: true
+    patterns:
+      - Adamw
+      - ADAMW
+      - adamw
+
+  - expected: SGD
+    options:
+      wordBoundary: true
+    patterns:
+      - Sgd
+      - sgd
+
+  - expected: AdaGrad
+    options:
+      wordBoundary: true
+    patterns:
+      - Adagrad
+      - adagrad
+      - ADAGRAD
+
+  - expected: RMSprop
+    options:
+      wordBoundary: true
+    patterns:
+      - RMSProp
+      - Rmsprop
+      - rmsprop
+      - RMSPROP
+
+  - expected: AdaDelta
+    options:
+      wordBoundary: true
+    patterns:
+      - Adadelta
+      - adadelta
+      - ADADELTA
+
+  # ============================================================
+  # 活性化関数
+  # ============================================================
+  - expected: ReLU
+    patterns:
+      - Relu
+      - relu
+      - RELU
+
+  - expected: GELU
+    patterns:
+      - GeLU
+      - Gelu
+      - gelu
+
+  - expected: LeakyReLU
+    patterns:
+      - /Leaky ReLU/
+      - /Leaky Relu/
+      - /leaky relu/
+      - /leakyReLU/
+
+  - expected: PReLU
+    patterns:
+      - Prelu
+      - prelu
+      - PRELU
+
+  - expected: Swish
+    patterns:
+      - swish
+      - SWISH
+
+  - expected: Tanh
+    patterns:
+      - tanh
+      - TANH
+      - TanH
+
+  # ============================================================
+  # 学習手法（英語表記）
+  # ============================================================
+  - expected: Fine-tuning
+    patterns:
+      - /finetuning/
+      - /fine tuning/
+      - /Fine Tuning/
+      - /Finetuning/
+
+  - expected: Pre-training
+    patterns:
+      - /pretraining/
+      - /pre training/
+      - /Pre Training/
+      - /Pretraining/
+
+  - expected: Backpropagation
+    patterns:
+      - /Back-propagation/
+      - /back-propagation/
+      - /backpropagation/
+      - /back propagation/
+
+  - expected: Dropout
+    patterns:
+      - dropout
+      - DROP OUT
+      - DropOut
+
+  - expected: Batch Normalization
+    patterns:
+      - /batch normalization/
+      - /BatchNorm/
+      - /batchnorm/
+
+  - expected: Layer Normalization
+    patterns:
+      - /layer normalization/
+      - /LayerNorm/
+      - /layernorm/
+
+  - expected: Transfer Learning
+    patterns:
+      - /transfer learning/
+
+  - expected: Data Augmentation
+    patterns:
+      - /data augmentation/
+
+  - expected: Knowledge Distillation
+    patterns:
+      - /knowledge distillation/
+
+  - expected: Contrastive Learning
+    patterns:
+      - /contrastive learning/
+
+  # ============================================================
+  # データセット・ベンチマーク
+  # ============================================================
+  - expected: ImageNet
+    patterns:
+      - Imagenet
+      - imagenet
+      - IMAGENET
+
+  - expected: CIFAR
+    patterns:
+      - Cifar
+      - cifar
+
+  - expected: COCO
+    patterns:
+      - Coco
+      - coco
