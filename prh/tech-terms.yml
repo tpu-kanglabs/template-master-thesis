@@ -50,7 +50,6 @@ rules:
 
   - expected: データセット
     patterns:
-      - データ・セット
       - データーセット
 
   - expected: データ拡張
@@ -63,22 +62,10 @@ rules:
       - オーバーフィッティング
       - オーバフィッティング
 
-  - expected: 汎化性能
-    patterns:
-      - 汎化能力
-
-  - expected: 転移学習
-    patterns:
-      - 転写学習
-
   - expected: 自己教師あり学習
     patterns:
       - 自己教師学習
       - 自己指導学習
-
-  - expected: 強化学習
-    patterns:
-      - 報酬学習
 
   - expected: アテンション機構
     patterns:
@@ -86,33 +73,14 @@ rules:
       - 注意機構
       - アテンションメカニズム
 
-  - expected: 自己アテンション
-    patterns:
-      - 自己注意機構
-      - セルフアテンション
-      - セルフ・アテンション
-
-  - expected: 多頭アテンション
-    patterns:
-      - マルチヘッドアテンション
-      - マルチヘッド・アテンション
-      - 多頭注意機構
-
   - expected: ドロップアウト
     patterns:
       - ドロップ・アウト
-      - ドロップ・アウト層
 
   - expected: バッチ正規化
     patterns:
       - バッチ正則化
       - バッチ・正規化
-
-  - expected: 層正規化
-    patterns:
-      - 層正則化
-      - レイヤー正規化
-      - レイヤ正規化
 
   - expected: 活性化関数
     patterns:
@@ -124,17 +92,9 @@ rules:
       - ロス関数
       - ロスト関数
 
-  - expected: 目的関数
-    patterns:
-      - 目標関数
-
   - expected: 勾配降下法
     patterns:
       - 勾配下降法
-
-  - expected: 確率的勾配降下法
-    patterns:
-      - 確率勾配降下法
 
   - expected: 誤差逆伝播法
     patterns:
@@ -143,25 +103,9 @@ rules:
       - バックプロパゲーション
       - バック・プロパゲーション
 
-  - expected: 特徴量
-    patterns:
-      - 特徴マップ  # 文脈依存だが feature map は特徴マップのほうが正確
-
-  - expected: エンコーダ・デコーダ
-    patterns:
-      - エンコーダデコーダ
-      - エンコーダ／デコーダ
-
   # ============================================================
   # 評価指標
   # ============================================================
-  - expected: 適合率
-    patterns:
-      - 精度  # Precision の文脈限定（文脈によっては曖昧なため注意）
-
-  - expected: 再現率
-    patterns:
-      - 検出率  # Recall の文脈
 
   - expected: F1スコア
     patterns:
@@ -169,14 +113,9 @@ rules:
       - /F1-スコア/
       - F値
 
-  - expected: 平均適合率
-    patterns:
-      - 平均精度
-
   - expected: 平均二乗誤差
     patterns:
       - 二乗平均誤差
-      - 二乗平均二乗誤差
 
   # ============================================================
   # 一般的な情報工学用語（JIS Z 8301 準拠・長音符省略）
@@ -192,10 +131,6 @@ rules:
   - expected: プロセッサ
     patterns:
       - プロセッサー
-
-  - expected: プリンタ
-    patterns:
-      - プリンター
 
   - expected: フィルタ
     patterns:
@@ -350,6 +285,7 @@ rules:
     patterns:
       - transformer
       - TRANSFORMER
+      - トランスフォーマー
 
   - expected: BERT
     patterns:
@@ -439,7 +375,7 @@ rules:
       - stablediffusion
 
   # ============================================================
-  # 注意機構（英語表記）
+  # Attention機構
   # ============================================================
   - expected: Self-Attention
     patterns:
