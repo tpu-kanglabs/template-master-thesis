@@ -11,7 +11,7 @@
   "rules": {
     "prh": {
       "rulePaths": [
-        "./prh.yml",
+        "./prh/punctuation.yml",
         "./prh/services.yml",
         "./prh/tech-terms.yml"
       ]
