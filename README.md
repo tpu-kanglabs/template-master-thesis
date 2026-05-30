@@ -4,7 +4,7 @@
 
 ## セットアップ
 
-右上の「Use this template」ボタンをクリックして，自分のGitHubアカウントに新しくリポジトリを作成してください．
+右上の「Use this template」ボタンをクリックして，自分のGitHubアカウントに新しくリポジトリを作成する．
 
 ### Dev Container
 
