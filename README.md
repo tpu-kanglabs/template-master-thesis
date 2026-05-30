@@ -4,11 +4,11 @@
 
 ## セットアップ
 
-右上の「Use this template」ボタンをクリックして、自分のGitHubアカウントに新しくリポジトリを作成してください．
+右上の「Use this template」ボタンをクリックして，自分のGitHubアカウントに新しくリポジトリを作成してください．
 
 ### Dev Container
 
-このリポジトリは、Visual Studio CodeのDev Container機能を使用して、LaTeX環境を簡単にセットアップできるようになっている。Dev Containerを使用することで、ローカルマシンにLaTeXをインストールすることなく、コンテナ内で作業できる．
+このリポジトリは，Visual Studio CodeのDev Container機能を使用して，LaTeX環境を簡単にセットアップできるようになっている．Dev Containerを使用することで，ローカルマシンにLaTeXをインストールすることなく，コンテナ内で作業できる．
 
 1. リポジトリをクローンする．
 2. Visual Studio Codeでクローンしたリポジトリを開く．
@@ -16,10 +16,10 @@
 
 ### GitHub Codespaces
 
-GitHub Codespacesを使用して、ブラウザ上でLaTeX環境をセットアップできる．
+GitHub Codespacesを使用して，ブラウザ上でLaTeX環境をセットアップできる．
 
 1. リポジトリのページにアクセスする．
-2. 画面右上の「Code」ボタンをクリックし、「Open with Codespaces」を選択する．
+2. 画面右上の「Code」ボタンをクリックし，「Open with Codespaces」を選択する．
 3. 新しいCodespaceを作成する．
 
 ## 文書のビルド
