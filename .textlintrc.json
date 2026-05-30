@@ -25,8 +25,8 @@
         "preferInBody": "である",
         "preferInList": "である",
         "strict": false
-      },
-      "@textlint-ja/preset-ai-writing": true
-    }
+      }
+    },
+    "@textlint-ja/preset-ai-writing": true
   }
 }
