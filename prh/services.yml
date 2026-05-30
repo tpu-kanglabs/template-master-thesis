@@ -1,0 +1,159 @@
+version: 1
+rules:
+  # ============================================================
+  # ディープラーニング・機械学習フレームワーク
+  # ============================================================
+  - expected: TensorFlow
+    patterns:
+      - Tensorflow
+      - tensor flow
+      - Tensor Flow
+      - TENSORFLOW
+
+  - expected: PyTorch
+    patterns:
+      - Pytorch
+      - py torch
+      - PYTORCH
+
+  - expected: NumPy
+    patterns:
+      - Numpy
+      - NUMPY
+
+  - expected: SciPy
+    patterns:
+      - Scipy
+      - SCIPY
+
+  - expected: scikit-learn
+    patterns:
+      - /Scikit-learn/
+      - /Scikit-Learn/
+      - ScikitLearn
+      - scikit learn
+      - sklearn
+
+  - expected: Matplotlib
+    patterns:
+      - MatplotLib
+      - matplot lib
+      - matplotlib
+
+  - expected: OpenCV
+    patterns:
+      - opencv
+      - Open CV
+      - open cv
+      - /open-cv/
+      - OpenCv
+
+  - expected: Hugging Face
+    patterns:
+      - HuggingFace
+      - huggingface
+      - hugging face
+
+  - expected: LangChain
+    patterns:
+      - langchain
+      - Lang Chain
+      - lang chain
+
+  # ============================================================
+  # ハードウェア・プラットフォーム
+  # ============================================================
+  - expected: CUDA
+    patterns:
+      - Cuda
+      - cuda
+
+  - expected: cuDNN
+    patterns:
+      - CUDNN
+      - CuDNN
+      - cudnn
+      - CudNN
+      - Cudnn
+
+  - expected: NVIDIA
+    patterns:
+      - Nvidia
+      - NVidia
+      - nvidia
+
+  - expected: ROCm
+    patterns:
+      - ROCM
+      - rocm
+
+  # ============================================================
+  # 開発ツール・バージョン管理
+  # ============================================================
+  - expected: GitHub
+    patterns:
+      - Github
+      - git hub
+      - GIT HUB
+
+  - expected: Python
+    patterns:
+      - PYTHON
+
+  - expected: Jupyter Notebook
+    patterns:
+      - jupyter notebook
+      - Jupyter notebook
+      - jupyter Notebook
+
+  - expected: JupyterLab
+    patterns:
+      - Jupyterlab
+      - jupyter lab
+      - Jupyter lab
+
+  - expected: Docker
+    patterns:
+      - docker
+
+  - expected: Ubuntu
+    patterns:
+      - ubuntu
+      - UBUNTU
+
+  - expected: Linux
+    patterns:
+      - linux
+      - LINUX
+
+  - expected: Windows
+    patterns:
+      - windows
+      - WINDOWS
+
+  - expected: macOS
+    patterns:
+      - MacOS
+      - MAC OS
+      - mac os
+      - Macos
+
+  # ============================================================
+  # クラウド・サービス
+  # ============================================================
+  - expected: Google Colab
+    patterns:
+      - google colab
+      - Google colab
+
+  - expected: Amazon Web Services
+    patterns:
+      - amazon web services
+
+  - expected: Google Cloud Platform
+    patterns:
+      - google cloud platform
+
+  - expected: Microsoft Azure
+    patterns:
+      - microsoft azure

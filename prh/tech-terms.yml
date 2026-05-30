@@ -1,0 +1,344 @@
+version: 1
+rules:
+  # ============================================================
+  # 深層学習・機械学習用語
+  # ============================================================
+  - expected: ニューラルネットワーク
+    patterns:
+      - ニューラル・ネットワーク
+      - ニューラルネットワーク  # 同形は無視されるが念のため
+
+  - expected: 畳み込みニューラルネットワーク
+    patterns:
+      - 畳込みニューラルネットワーク
+      - 畳み込みニューラル・ネットワーク
+
+  - expected: 再帰型ニューラルネットワーク
+    patterns:
+      - 再帰的ニューラルネットワーク
+      - 再帰ニューラルネットワーク
+
+  - expected: 敵対的生成ネットワーク
+    patterns:
+      - 生成的敵対ネットワーク
+      - 敵対的生成的ネットワーク
+
+  - expected: 変分オートエンコーダ
+    patterns:
+      - 変分オートエンコーダー
+      - 変分自己符号化器
+      - 変分オート・エンコーダ
+
+  - expected: オートエンコーダ
+    patterns:
+      - オートエンコーダー
+      - オート・エンコーダ
+      - オート・エンコーダー
+      - 自己符号化器
+
+  - expected: ハイパーパラメータ
+    patterns:
+      - ハイパーパラメーター
+      - ハイパー・パラメータ
+      - ハイパー・パラメーター
+
+  - expected: ファインチューニング
+    patterns:
+      - ファイン・チューニング
+      - ファインチュー二ング
+      - ファイン・チュー二ング
+
+  - expected: データセット
+    patterns:
+      - データ・セット
+      - データーセット
+
+  - expected: データ拡張
+    patterns:
+      - データ・拡張
+      - データオーグメンテーション
+
+  - expected: 過学習
+    patterns:
+      - オーバーフィッティング
+      - オーバフィッティング
+
+  - expected: 汎化性能
+    patterns:
+      - 汎化能力
+
+  - expected: 転移学習
+    patterns:
+      - 転写学習
+
+  - expected: 自己教師あり学習
+    patterns:
+      - 自己教師学習
+      - 自己指導学習
+
+  - expected: 強化学習
+    patterns:
+      - 報酬学習
+
+  - expected: アテンション機構
+    patterns:
+      - アテンション・機構
+      - 注意機構
+      - アテンションメカニズム
+
+  - expected: 自己アテンション
+    patterns:
+      - 自己注意機構
+      - セルフアテンション
+      - セルフ・アテンション
+
+  - expected: 多頭アテンション
+    patterns:
+      - マルチヘッドアテンション
+      - マルチヘッド・アテンション
+      - 多頭注意機構
+
+  - expected: ドロップアウト
+    patterns:
+      - ドロップ・アウト
+      - ドロップ・アウト層
+
+  - expected: バッチ正規化
+    patterns:
+      - バッチ正則化
+      - バッチ・正規化
+
+  - expected: 層正規化
+    patterns:
+      - 層正則化
+      - レイヤー正規化
+      - レイヤ正規化
+
+  - expected: 活性化関数
+    patterns:
+      - 活性関数
+      - 活性化関数
+
+  - expected: 損失関数
+    patterns:
+      - ロス関数
+      - ロスト関数
+
+  - expected: 目的関数
+    patterns:
+      - 目標関数
+
+  - expected: 勾配降下法
+    patterns:
+      - 勾配下降法
+
+  - expected: 確率的勾配降下法
+    patterns:
+      - 確率勾配降下法
+
+  - expected: 誤差逆伝播法
+    patterns:
+      - 誤差逆伝搬法
+      - 逆誤差伝播法
+      - バックプロパゲーション
+      - バック・プロパゲーション
+
+  - expected: 特徴量
+    patterns:
+      - 特徴マップ  # 文脈依存だが feature map は特徴マップのほうが正確
+
+  - expected: エンコーダ・デコーダ
+    patterns:
+      - エンコーダデコーダ
+      - エンコーダ／デコーダ
+
+  # ============================================================
+  # 評価指標
+  # ============================================================
+  - expected: 適合率
+    patterns:
+      - 精度  # Precision の文脈限定（文脈によっては曖昧なため注意）
+
+  - expected: 再現率
+    patterns:
+      - 検出率  # Recall の文脈
+
+  - expected: F1スコア
+    patterns:
+      - F1値
+      - /F1-スコア/
+      - F値
+
+  - expected: 平均適合率
+    patterns:
+      - 平均精度
+
+  - expected: 平均二乗誤差
+    patterns:
+      - 二乗平均誤差
+      - 二乗平均二乗誤差
+
+  # ============================================================
+  # 一般的な情報工学用語（JIS Z 8301 準拠・長音符省略）
+  # ============================================================
+  - expected: コンピュータ
+    patterns:
+      - コンピューター
+
+  - expected: パラメータ
+    patterns:
+      - パラメーター
+
+  - expected: プロセッサ
+    patterns:
+      - プロセッサー
+
+  - expected: プリンタ
+    patterns:
+      - プリンター
+
+  - expected: フィルタ
+    patterns:
+      - フィルター
+
+  - expected: インタフェース
+    patterns:
+      - インターフェース
+      - インタフェイス
+      - インターフェイス
+
+  - expected: アーキテクチャ
+    patterns:
+      - アーキテクチャー
+
+  - expected: レジスタ
+    patterns:
+      - レジスター
+
+  - expected: ライブラリ
+    patterns:
+      - ライブラリー
+
+  - expected: リポジトリ
+    patterns:
+      - リポジトリー
+      - レポジトリ
+      - レポジトリー
+
+  - expected: ベクトル
+    patterns:
+      - ベクター
+      - ベクタ
+
+  - expected: テンソル
+    patterns:
+      - テンサー
+      - テンサ
+
+  - expected: スカラ
+    patterns:
+      - スカラー
+
+  - expected: バッファ
+    patterns:
+      - バッファー
+
+  - expected: サーバ
+    patterns:
+      - サーバー
+
+  - expected: メモリ
+    patterns:
+      - メモリー
+
+  - expected: レイテンシ
+    patterns:
+      - レイテンシー
+      - レイテンス
+
+  - expected: バイナリ
+    patterns:
+      - バイナリー
+
+  - expected: ディレクトリ
+    patterns:
+      - ディレクトリー
+
+  - expected: アクセラレータ
+    patterns:
+      - アクセラレーター
+      - アクセラレータ  # already correct
+
+  - expected: エミュレータ
+    patterns:
+      - エミュレーター
+
+  - expected: シミュレータ
+    patterns:
+      - シミュレーター
+
+  - expected: コンパイラ
+    patterns:
+      - コンパイラー
+
+  - expected: デバッガ
+    patterns:
+      - デバッガー
+
+  - expected: センサ
+    patterns:
+      - センサー
+
+  - expected: アクチュエータ
+    patterns:
+      - アクチュエーター
+
+  - expected: コントローラ
+    patterns:
+      - コントローラー
+
+  - expected: ルータ
+    patterns:
+      - ルーター
+
+  # ============================================================
+  # 一般的な表記揺れ
+  # ============================================================
+  - expected: データベース
+    patterns:
+      - データ・ベース
+      - データーベース
+
+  - expected: ファイルシステム
+    patterns:
+      - ファイル・システム
+      - ファイルシステム  # already correct
+
+  - expected: オペレーティングシステム
+    patterns:
+      - オペレーティング・システム
+      - オペレーティングシステム  # already correct
+
+  - expected: フレームワーク
+    patterns:
+      - フレーム・ワーク
+      - フレームワーク  # already correct
+
+  - expected: ネットワーク
+    patterns:
+      - ネット・ワーク
+
+  - expected: ベンチマーク
+    patterns:
+      - ベンチ・マーク
+
+  - expected: ウェブサイト
+    patterns:
+      - Web サイト
+      - web サイト
+      - Webサイト
+      - ウェブ・サイト
+
+  - expected: インターネット
+    patterns:
+      - ネットワーク・インターネット
