@@ -13,7 +13,8 @@
       "rulePaths": [
         "./prh/punctuation.yml",
         "./prh/services.yml",
-        "./prh/tech-terms.yml"
+        "./prh/tech-terms.yml",
+        "./prh/dl-en-terms.yml"
       ]
     },
     "preset-ja-technical-writing": {
