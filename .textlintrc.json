@@ -10,7 +10,11 @@
   },
   "rules": {
     "prh": {
-      "rulePaths": ["./prh.yml"]
+      "rulePaths": [
+        "./prh/punctuation.yml",
+        "./prh/services.yml",
+        "./prh/tech-terms.yml"
+      ]
     },
     "preset-ja-technical-writing": {
       "ja-no-mixed-period": {

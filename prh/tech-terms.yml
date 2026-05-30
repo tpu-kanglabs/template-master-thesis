@@ -1,0 +1,562 @@
+version: 1
+rules:
+  # ============================================================
+  # 深層学習・機械学習用語
+  # ============================================================
+  - expected: ニューラルネットワーク
+    patterns:
+      - ニューラル・ネットワーク
+      - ニューラルネットワーク  # 同形は無視されるが念のため
+
+  - expected: 畳み込みニューラルネットワーク
+    patterns:
+      - 畳込みニューラルネットワーク
+      - 畳み込みニューラル・ネットワーク
+
+  - expected: 再帰型ニューラルネットワーク
+    patterns:
+      - 再帰的ニューラルネットワーク
+      - 再帰ニューラルネットワーク
+
+  - expected: 敵対的生成ネットワーク
+    patterns:
+      - 生成的敵対ネットワーク
+      - 敵対的生成的ネットワーク
+
+  - expected: 変分オートエンコーダ
+    patterns:
+      - 変分オートエンコーダー
+      - 変分自己符号化器
+      - 変分オート・エンコーダ
+
+  - expected: オートエンコーダ
+    patterns:
+      - オートエンコーダー
+      - オート・エンコーダ
+      - オート・エンコーダー
+      - 自己符号化器
+
+  - expected: ハイパーパラメータ
+    patterns:
+      - ハイパーパラメーター
+      - ハイパー・パラメータ
+      - ハイパー・パラメーター
+
+  - expected: ファインチューニング
+    patterns:
+      - ファイン・チューニング
+      - ファインチュー二ング
+      - ファイン・チュー二ング
+
+  - expected: データセット
+    patterns:
+      - データーセット
+
+  - expected: データ拡張
+    patterns:
+      - データ・拡張
+      - データオーグメンテーション
+
+  - expected: 過学習
+    patterns:
+      - オーバーフィッティング
+      - オーバフィッティング
+
+  - expected: 自己教師あり学習
+    patterns:
+      - 自己教師学習
+      - 自己指導学習
+
+  - expected: アテンション機構
+    patterns:
+      - アテンション・機構
+      - 注意機構
+      - アテンションメカニズム
+
+  - expected: ドロップアウト
+    patterns:
+      - ドロップ・アウト
+
+  - expected: バッチ正規化
+    patterns:
+      - バッチ正則化
+      - バッチ・正規化
+
+  - expected: 活性化関数
+    patterns:
+      - 活性関数
+      - 活性化関数
+
+  - expected: 損失関数
+    patterns:
+      - ロス関数
+      - ロスト関数
+
+  - expected: 勾配降下法
+    patterns:
+      - 勾配下降法
+
+  - expected: 誤差逆伝播法
+    patterns:
+      - 誤差逆伝搬法
+      - 逆誤差伝播法
+      - バックプロパゲーション
+      - バック・プロパゲーション
+
+  # ============================================================
+  # 評価指標
+  # ============================================================
+
+  - expected: F1スコア
+    patterns:
+      - F1値
+      - /F1-スコア/
+      - F値
+
+  - expected: 平均二乗誤差
+    patterns:
+      - 二乗平均誤差
+
+  # ============================================================
+  # 一般的な情報工学用語（JIS Z 8301 準拠・長音符省略）
+  # ============================================================
+  - expected: コンピュータ
+    patterns:
+      - コンピューター
+
+  - expected: パラメータ
+    patterns:
+      - パラメーター
+
+  - expected: プロセッサ
+    patterns:
+      - プロセッサー
+
+  - expected: フィルタ
+    patterns:
+      - フィルター
+
+  - expected: インタフェース
+    patterns:
+      - インターフェース
+      - インタフェイス
+      - インターフェイス
+
+  - expected: アーキテクチャ
+    patterns:
+      - アーキテクチャー
+
+  - expected: レジスタ
+    patterns:
+      - レジスター
+
+  - expected: ライブラリ
+    patterns:
+      - ライブラリー
+
+  - expected: リポジトリ
+    patterns:
+      - リポジトリー
+      - レポジトリ
+      - レポジトリー
+
+  - expected: ベクトル
+    patterns:
+      - ベクター
+      - ベクタ
+
+  - expected: テンソル
+    patterns:
+      - テンサー
+      - テンサ
+
+  - expected: スカラ
+    patterns:
+      - スカラー
+
+  - expected: バッファ
+    patterns:
+      - バッファー
+
+  - expected: サーバ
+    patterns:
+      - サーバー
+
+  - expected: メモリ
+    patterns:
+      - メモリー
+
+  - expected: レイテンシ
+    patterns:
+      - レイテンシー
+      - レイテンス
+
+  - expected: バイナリ
+    patterns:
+      - バイナリー
+
+  - expected: ディレクトリ
+    patterns:
+      - ディレクトリー
+
+  - expected: アクセラレータ
+    patterns:
+      - アクセラレーター
+      - アクセラレータ  # already correct
+
+  - expected: エミュレータ
+    patterns:
+      - エミュレーター
+
+  - expected: シミュレータ
+    patterns:
+      - シミュレーター
+
+  - expected: コンパイラ
+    patterns:
+      - コンパイラー
+
+  - expected: デバッガ
+    patterns:
+      - デバッガー
+
+  - expected: センサ
+    patterns:
+      - センサー
+
+  - expected: アクチュエータ
+    patterns:
+      - アクチュエーター
+
+  - expected: コントローラ
+    patterns:
+      - コントローラー
+
+  - expected: ルータ
+    patterns:
+      - ルーター
+
+  # ============================================================
+  # 一般的な表記揺れ
+  # ============================================================
+  - expected: データベース
+    patterns:
+      - データ・ベース
+      - データーベース
+
+  - expected: ファイルシステム
+    patterns:
+      - ファイル・システム
+      - ファイルシステム  # already correct
+
+  - expected: オペレーティングシステム
+    patterns:
+      - オペレーティング・システム
+      - オペレーティングシステム  # already correct
+
+  - expected: フレームワーク
+    patterns:
+      - フレーム・ワーク
+      - フレームワーク  # already correct
+
+  - expected: ネットワーク
+    patterns:
+      - ネット・ワーク
+
+  - expected: ベンチマーク
+    patterns:
+      - ベンチ・マーク
+
+  - expected: ウェブサイト
+    patterns:
+      - Web サイト
+      - web サイト
+      - Webサイト
+      - ウェブ・サイト
+
+  - expected: インターネット
+    patterns:
+      - ネットワーク・インターネット
+
+  # ============================================================
+  # モデルアーキテクチャ
+  # ============================================================
+  - expected: Transformer
+    patterns:
+      - transformer
+      - TRANSFORMER
+      - トランスフォーマー
+
+  - expected: BERT
+    patterns:
+      - Bert
+      - bert
+
+  - expected: GPT
+    patterns:
+      - Gpt
+      - gpt
+
+  - expected: LLaMA
+    patterns:
+      - Llama
+      - llama
+      - LLAMA
+
+  - expected: ViT
+    patterns:
+      - VIT
+      - vit
+
+  - expected: CLIP
+    patterns:
+      - Clip
+      - clip
+
+  - expected: ResNet
+    patterns:
+      - Resnet
+      - resnet
+      - RESNET
+
+  - expected: VGG
+    patterns:
+      - vgg
+      - Vgg
+
+  - expected: EfficientNet
+    patterns:
+      - efficientnet
+      - Efficientnet
+      - EFFICIENTNET
+
+  - expected: MobileNet
+    patterns:
+      - mobilenet
+      - Mobilenet
+      - MOBILENET
+
+  - expected: YOLO
+    patterns:
+      - Yolo
+      - yolo
+
+  - expected: U-Net
+    patterns:
+      - /Unet/
+      - /UNet/
+      - /unet/
+      - /u-net/
+
+  - expected: GAN
+    patterns:
+      - Gan
+      - gan
+
+  - expected: VAE
+    patterns:
+      - Vae
+      - vae
+
+  - expected: LSTM
+    patterns:
+      - Lstm
+      - lstm
+
+  - expected: GRU
+    patterns:
+      - Gru
+      - gru
+
+  - expected: Stable Diffusion
+    patterns:
+      - stable diffusion
+      - StableDiffusion
+      - stablediffusion
+
+  # ============================================================
+  # Attention機構
+  # ============================================================
+  - expected: Self-Attention
+    patterns:
+      - /self attention/
+      - /SelfAttention/
+      - /selfAttention/
+
+  - expected: Multi-Head Attention
+    patterns:
+      - /multi-head attention/
+      - /MultiHead Attention/
+      - /Multihead Attention/
+      - /multihead attention/
+
+  - expected: Cross-Attention
+    patterns:
+      - /cross attention/
+      - /CrossAttention/
+
+  # ============================================================
+  # 最適化アルゴリズム
+  # ============================================================
+  - expected: Adam
+    options:
+      wordBoundary: true
+    patterns:
+      - ADAM
+      - adam
+
+  - expected: AdamW
+    options:
+      wordBoundary: true
+    patterns:
+      - Adamw
+      - ADAMW
+      - adamw
+
+  - expected: SGD
+    options:
+      wordBoundary: true
+    patterns:
+      - Sgd
+      - sgd
+
+  - expected: AdaGrad
+    options:
+      wordBoundary: true
+    patterns:
+      - Adagrad
+      - adagrad
+      - ADAGRAD
+
+  - expected: RMSprop
+    options:
+      wordBoundary: true
+    patterns:
+      - RMSProp
+      - Rmsprop
+      - rmsprop
+      - RMSPROP
+
+  - expected: AdaDelta
+    options:
+      wordBoundary: true
+    patterns:
+      - Adadelta
+      - adadelta
+      - ADADELTA
+
+  # ============================================================
+  # 活性化関数
+  # ============================================================
+  - expected: ReLU
+    patterns:
+      - Relu
+      - relu
+      - RELU
+
+  - expected: GELU
+    patterns:
+      - GeLU
+      - Gelu
+      - gelu
+
+  - expected: LeakyReLU
+    patterns:
+      - /Leaky ReLU/
+      - /Leaky Relu/
+      - /leaky relu/
+      - /leakyReLU/
+
+  - expected: PReLU
+    patterns:
+      - Prelu
+      - prelu
+      - PRELU
+
+  - expected: Swish
+    patterns:
+      - swish
+      - SWISH
+
+  - expected: Tanh
+    patterns:
+      - tanh
+      - TANH
+      - TanH
+
+  # ============================================================
+  # 学習手法（英語表記）
+  # ============================================================
+  - expected: Fine-tuning
+    patterns:
+      - /finetuning/
+      - /fine tuning/
+      - /Fine Tuning/
+      - /Finetuning/
+
+  - expected: Pre-training
+    patterns:
+      - /pretraining/
+      - /pre training/
+      - /Pre Training/
+      - /Pretraining/
+
+  - expected: Backpropagation
+    patterns:
+      - /Back-propagation/
+      - /back-propagation/
+      - /backpropagation/
+      - /back propagation/
+
+  - expected: Dropout
+    patterns:
+      - dropout
+      - DROP OUT
+      - DropOut
+
+  - expected: Batch Normalization
+    patterns:
+      - /batch normalization/
+      - /BatchNorm/
+      - /batchnorm/
+
+  - expected: Layer Normalization
+    patterns:
+      - /layer normalization/
+      - /LayerNorm/
+      - /layernorm/
+
+  - expected: Transfer Learning
+    patterns:
+      - /transfer learning/
+
+  - expected: Data Augmentation
+    patterns:
+      - /data augmentation/
+
+  - expected: Knowledge Distillation
+    patterns:
+      - /knowledge distillation/
+
+  - expected: Contrastive Learning
+    patterns:
+      - /contrastive learning/
+
+  # ============================================================
+  # データセット・ベンチマーク
+  # ============================================================
+  - expected: ImageNet
+    patterns:
+      - Imagenet
+      - imagenet
+      - IMAGENET
+
+  - expected: CIFAR
+    patterns:
+      - Cifar
+      - cifar
+
+  - expected: COCO
+    patterns:
+      - Coco
+      - coco
