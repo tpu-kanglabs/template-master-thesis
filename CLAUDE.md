@@ -6,7 +6,7 @@
 
 ```bash
 latexmk thesis.tex    # 本文
-latexmk abstract.tex  # 要旨（学位申請用）
+latexmk abstract.tex  # 要旨
 ```
 
 出力は `out/` ディレクトリ。
@@ -37,7 +37,7 @@ latexmk abstract.tex  # 要旨（学位申請用）
 - `bibliography/references.bib` に BibTeX エントリを追記
 - 本文中で `\cite{key}` で引用
 - 参考文献リストは `\printreferences`（`\printbibliography[title=参考文献]` の省略形）
-- 日本語文献には `keywords = {ja}` タグを付けると著者名区切りが `，`（全角コンマ）になる
+- 日本語文献には `keywords = {ja}` タグを付けると著者名区切りをつける
 
 ## 概要ページ
 
@@ -50,4 +50,4 @@ latexmk abstract.tex  # 要旨（学位申請用）
 
 - エンジンは **LuaLaTeX のみ**（pdflatex・xelatex 不可）
 - 参考文献管理は **biblatex + biber のみ**（natbib・bibtex 不可）
-- カスタムクラス・スタイルは `latex/` に置く（`.latexmkrc` の `TEXINPUTS` で自動検索）
+- カスタムクラス・スタイルは `latex/` に置く
