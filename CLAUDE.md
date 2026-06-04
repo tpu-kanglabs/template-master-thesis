@@ -46,6 +46,18 @@ latexmk abstract.tex  # 要旨
 - `jabstract` — 日本語概要
 - `abstract` — 英語概要
 
+## フォーマット（latexindent）
+
+`.tex` / `.cls` / `.sty` ファイルのフォーマットには `latexindent` を使用する。設定は `.latexindent.yaml`。
+
+| 操作 | コマンド |
+|---|---|
+| ドライラン（確認のみ） | `latexindent -l -m -r -g /dev/null <file.tex>` |
+| 上書き保存 | `latexindent -l -m -r -g /dev/null -w <file.tex>` |
+| VS Code | `Shift+Alt+F` |
+
+**注意**：`oneSentencePerLine` は無効（日本語文 `。` に未対応）。`jabstract` / `abstract` 環境の本文は変更されない。
+
 ## 制約
 
 - エンジンは **LuaLaTeX のみ**（pdflatex・xelatex 不可）

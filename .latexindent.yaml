@@ -1,0 +1,86 @@
+fileExtensionPreference:
+  tex: 1
+
+onlyOneBackUp: 1
+maxNumberOfBackUps: 1
+defaultIndent: "\t"
+
+# jabstract/abstract の本文は日本語・英語散文のため書き換えない
+verbatimEnvironments:
+  verbatim: 1
+  verbatim*: 1
+  Verbatim: 1
+  lstlisting: 1
+  minted: 1
+  jabstract: 1
+  abstract: 1
+
+lookForAlignDelims:
+  tabular:
+    delims: 1
+    alignDoubleBackSlash: 1
+    spacesBeforeDoubleBackSlash: 1
+    spacesBeforeAmpersand: 1
+    spacesAfterAmpersand: 1
+    justification: left
+    lookForChildCodeBlocks: 0
+  tabular*:
+    delims: 1
+    alignDoubleBackSlash: 1
+  array:
+    delims: 1
+    alignDoubleBackSlash: 1
+    spacesBeforeAmpersand: 1
+    spacesAfterAmpersand: 1
+    justification: left
+  aligned:
+    delims: 1
+    alignDoubleBackSlash: 1
+    spacesBeforeAmpersand: 1
+    spacesAfterAmpersand: 1
+    justification: left
+  align:
+    delims: 1
+    alignDoubleBackSlash: 1
+    spacesBeforeAmpersand: 1
+    spacesAfterAmpersand: 1
+    justification: left
+  cases:
+    delims: 1
+    alignDoubleBackSlash: 1
+    spacesBeforeAmpersand: 1
+    spacesAfterAmpersand: 1
+    justification: left
+  gather:
+    delims: 0
+
+modifyLineBreaks:
+  preserveBlankLines: 1
+  condenseMultipleBlankLinesInto: 1
+
+  # 日本語文は「。」で終わるため英語向けの文末検出が誤作動する → 無効
+  oneSentencePerLine:
+    manipulateSentences: 0
+
+  # poly-switches: 1 = 改行がなければ追加（既存の改行は削除しない）
+  environments:
+    BeginStartsOnOwnLine: 1
+    BodyStartsOnOwnLine: 1
+    EndStartsOnOwnLine: 1
+    EndFinishesWithLineBreak: 1
+
+  ifElseFi:
+    BodyStartsOnOwnLine: 1
+    ElseStartsOnOwnLine: 1
+    ElseFinishesWithLineBreak: 1
+    FiStartsOnOwnLine: 1
+    FiFinishesWithLineBreak: 1
+
+  commands:
+    CommandStartsOnOwnLine: 0
+    CommandNameFinishesWithLineBreak: 0
+
+# -r フラグが必要。末尾空白の除去のみ（CJK 文字への影響なし）
+replacements:
+  - substitution: s/[ \t]+$//mg
+    when: always

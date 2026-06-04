@@ -22,6 +22,21 @@
   "latex-workshop.synctex.afterBuild.enabled": true,
   "latex-workshop.view.pdf.viewer": "tab",
   "latex-workshop.latex.autoClean.run": "never",
+  "latex-workshop.latexindent.path": "latexindent",
+  "latex-workshop.latexindent.args": [
+    "-c",
+    "%DIR%/",
+    "%TMPFILE%",
+    "-l",
+    "-m",
+    "-r",
+    "-g",
+    "/dev/null"
+  ],
+  "[latex]": {
+    "editor.defaultFormatter": "James-Yu.latex-workshop",
+    "editor.formatOnSave": false
+  },
   "files.exclude": {
     "LICENSE": true,
     "pnpm-lock.yaml": true,

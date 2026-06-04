@@ -15,3 +15,7 @@ node_modules/
 *.run.xml
 *.synctex.gz
 *.toc
+
+# latexindent
+*.bak*
+indent.log

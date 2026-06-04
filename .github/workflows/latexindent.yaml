@@ -1,0 +1,57 @@
+name: Format check (latexindent)
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "**/*.tex"
+      - "**/*.cls"
+      - "**/*.sty"
+      - ".latexindent.yaml"
+      - ".github/workflows/latexindent.yaml"
+  pull_request:
+    paths:
+      - "**/*.tex"
+      - "**/*.cls"
+      - "**/*.sty"
+      - ".latexindent.yaml"
+      - ".github/workflows/latexindent.yaml"
+
+permissions:
+  contents: read
+
+jobs:
+  latexindent:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/tpu-kanglabs/texlive:latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check formatting
+        run: |
+          set -euo pipefail
+          git config --global --add safe.directory '*'
+          mapfile -t FILES < <(git ls-files '*.tex' '*.cls' '*.sty')
+          if [ ${#FILES[@]} -eq 0 ]; then
+            echo "No LaTeX files found."
+            exit 0
+          fi
+          FAILED=0
+          for f in "${FILES[@]}"; do
+            FORMATTED=$(latexindent -l -m -r -g /dev/null "$f" 2>/dev/null)
+            if ! diff <(cat "$f") <(echo "$FORMATTED") > /dev/null 2>&1; then
+              echo "::error file=${f}::Needs formatting: ${f}"
+              diff <(cat "$f") <(echo "$FORMATTED") || true
+              FAILED=1
+            fi
+          done
+          if [ "$FAILED" -eq 1 ]; then
+            echo ""
+            echo "One or more files need formatting."
+            echo "Fix with: latexindent -l -m -r -g /dev/null -w <file.tex>"
+            echo "Or use Shift+Alt+F in VS Code."
+            exit 1
+          fi
+          echo "All files are correctly formatted."
