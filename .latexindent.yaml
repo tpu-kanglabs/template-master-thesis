@@ -3,7 +3,13 @@ fileExtensionPreference:
 
 onlyOneBackUp: 1
 maxNumberOfBackUps: 1
-defaultIndent: "\t"
+defaultIndent: "  "
+
+# document body 自体はインデントしない（latexindent のデフォルト動作を明示）
+# acknowledgements は散文のため \begin{document} と同じ扱い
+noAdditionalIndent:
+  document: 1
+  acknowledgements: 1
 
 # jabstract/abstract の本文は日本語・英語散文のため書き換えない
 verbatimEnvironments:
@@ -15,18 +21,14 @@ verbatimEnvironments:
   jabstract: 1
   abstract: 1
 
+# 表の & 整列
+# 注意: tabular の整列は CJK 文字の文字幅とずれるため無効
 lookForAlignDelims:
   tabular:
-    delims: 1
-    alignDoubleBackSlash: 1
-    spacesBeforeDoubleBackSlash: 1
-    spacesBeforeAmpersand: 1
-    spacesAfterAmpersand: 1
-    justification: left
-    lookForChildCodeBlocks: 0
+    delims: 0
   tabular*:
-    delims: 1
-    alignDoubleBackSlash: 1
+    delims: 0
+  # 数式環境は ASCII のみなので整列を有効化
   array:
     delims: 1
     alignDoubleBackSlash: 1
@@ -62,12 +64,14 @@ modifyLineBreaks:
   oneSentencePerLine:
     manipulateSentences: 0
 
-  # poly-switches: 1 = 改行がなければ追加（既存の改行は削除しない）
+  # poly-switches
+  # BodyStartsOnOwnLine: 0 → \begin{tabular}{lcc} の {lcc} が改行されるのを防ぐ
+  # EndFinishesWithLineBreak: 0 → \end{center}% の % が次行に移動するのを防ぐ
   environments:
     BeginStartsOnOwnLine: 1
-    BodyStartsOnOwnLine: 1
+    BodyStartsOnOwnLine: 0
     EndStartsOnOwnLine: 1
-    EndFinishesWithLineBreak: 1
+    EndFinishesWithLineBreak: 0
 
   ifElseFi:
     BodyStartsOnOwnLine: 1

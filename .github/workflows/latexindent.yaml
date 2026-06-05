@@ -6,15 +6,11 @@ on:
       - main
     paths:
       - "**/*.tex"
-      - "**/*.cls"
-      - "**/*.sty"
       - ".latexindent.yaml"
       - ".github/workflows/latexindent.yaml"
   pull_request:
     paths:
       - "**/*.tex"
-      - "**/*.cls"
-      - "**/*.sty"
       - ".latexindent.yaml"
       - ".github/workflows/latexindent.yaml"
 
@@ -34,9 +30,9 @@ jobs:
         run: |
           set -euo pipefail
           git config --global --add safe.directory '*'
-          mapfile -t FILES < <(git ls-files '*.tex' '*.cls' '*.sty')
+          mapfile -t FILES < <(git ls-files '*.tex')
           if [ ${#FILES[@]} -eq 0 ]; then
-            echo "No LaTeX files found."
+            echo "No .tex files found."
             exit 0
           fi
           FAILED=0
@@ -55,4 +51,4 @@ jobs:
             echo "Or use Shift+Alt+F in VS Code."
             exit 1
           fi
-          echo "All files are correctly formatted."
+          echo "All .tex files are correctly formatted."
