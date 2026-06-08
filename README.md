@@ -75,4 +75,4 @@ latexmk thesis.tex
 pnpm lint
 ```
 
-必要に応じて[`.textlintrc.json`](.textlintrc.json)などを調整すること．
+必要に応じて[`.textlintrc.json`](.textlintrc.json)を調整すること．
