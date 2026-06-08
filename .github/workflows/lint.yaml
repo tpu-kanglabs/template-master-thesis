@@ -38,4 +38,4 @@ jobs:
           pnpm exec textlint --format checkstyle "**/*.{md,tex}" | \
             reviewdog -f=checkstyle -name="textlint" \
               -reporter=${{ github.event_name == 'pull_request' && 'github-pr-review' || 'github-check' }} \
-              -fail-on-error
+              -fail-level=any
