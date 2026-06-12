@@ -10,6 +10,12 @@
 - GitHub Actionsによる自動ビルドおよびLint
 - Claude Codeに対応
 
+## 文書の例
+
+| タイトル | 論文要旨 | 目次 | 本文 | 要旨 |
+|:---:|:---:|:---:|:---:|:---:|
+| <img width="100%" src="https://github.com/user-attachments/assets/3892bd01-6821-44c8-8112-9a67ad1c7ff6"/> | <img width="100%" src="https://github.com/user-attachments/assets/9ad0a3b6-2929-442a-9b69-af0f55ee88b7" /> | <img width="100%" src="https://github.com/user-attachments/assets/4516ebba-35c1-4383-b174-2aaa848785de" /> | <img width="100%" src="https://github.com/user-attachments/assets/f019c761-7545-40af-9b82-a72154ca65b7" /> | <img width="100%" src="https://github.com/user-attachments/assets/f37b4e6c-0a85-4a08-a6ca-bc181a5effe4" />
+
 ## セットアップ
 
 右上の「Use this template」ボタンをクリックして，自分のGitHubアカウントに新しくリポジトリを作成する．またはZipファイルでダウンロードする．
