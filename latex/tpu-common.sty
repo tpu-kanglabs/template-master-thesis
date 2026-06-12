@@ -1,0 +1,58 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{tpu-common}[2026/06/13 v1.1 TPU shared packages and PDF metadata]
+
+%--- Shared packages ------------------------------------------------------------
+\RequirePackage{graphicx}
+\RequirePackage{amsmath,amssymb,amsthm}
+\RequirePackage{mathtools}
+\RequirePackage{booktabs}
+\RequirePackage[hidelinks,hypertexnames=false,setpagesize=false]{hyperref}
+\RequirePackage{cleveref}
+\RequirePackage{autonum}
+
+%--- Shared metadata and bibliography -------------------------------------------
+\RequirePackage{tpu-meta}
+\RequirePackage{tpu-biblatex}
+
+%--- cleveref -------------------------------------------------
+\crefname{equation}{式}{式}
+\crefname{figure}{図}{図}
+\crefname{table}{表}{表}
+\crefname{algorithm}{Algorithm}{Algorithm}
+
+\crefname{section}{第}{第}
+\creflabelformat{section}{#2#1節#3}
+\crefname{subsection}{第}{第}
+\creflabelformat{subsection}{#2#1小節#3}
+
+\def\crefpairconjunction{と}
+\def\crefrangeconjunction{から}
+\def\crefmiddleconjunction{，}
+\def\creflastconjunction{，および}
+
+%--- amsthm -------------------------------------------------
+\theoremstyle{definition}
+\newtheorem{theorem}{定理}
+\crefname{theorem}{定理}{定理}
+\newtheorem{lemma}{補題}
+\crefname{lemma}{補題}{補題}
+\newtheorem{corollary}{系}
+\crefname{corollary}{系}{系}
+\newtheorem*{proof*}{証明}
+\crefname{proof*}{証明}{証明}
+\newtheorem{assumption}{仮定}
+\crefname{assumption}{仮定}{仮定}
+\newtheorem{definition}{定義}
+\crefname{definition}{定義}{定義}
+\newtheorem{remark}{注意}
+\crefname{remark}{注意}{注意}
+\newtheorem{proposition}{命題}
+\crefname{proposition}{命題}{命題}
+
+%--- PDF metadata ---------------------------------------------------------------
+\AtBeginDocument{%
+  \hypersetup{%
+    pdftitle  = {\tpu@thesistitle},%
+    pdfauthor = {\tpu@authorname},%
+  }%
+}

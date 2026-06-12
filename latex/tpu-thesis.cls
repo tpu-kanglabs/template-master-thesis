@@ -8,18 +8,8 @@
 \ProcessOptions\relax
 \LoadClass{jlreq}
 
-%--- Required packages ----------------------------------------------------------
-\RequirePackage{graphicx}
-\RequirePackage{amsmath,amssymb}
-\RequirePackage{booktabs}
-\RequirePackage[hidelinks]{hyperref}
-
-%--- Shared metadata and bibliography -------------------------------------------
-% Metadata setters (\thesistitle, \authorname, etc.) and internal \tpu@... macros
-% live in tpu-meta.sty so abstract.tex can share them without loading tpu-thesis.
-% IEEE-style biblatex with Japanese/multi-cite customizations lives in tpu-biblatex.sty.
-\RequirePackage{tpu-meta}
-\RequirePackage{tpu-biblatex}
+%--- Shared packages, metadata, bibliography, and PDF metadata ------------------
+\RequirePackage{tpu-common}
 
 %--- Cover page -----------------------------------------------------------------
 \renewcommand{\maketitle}{%
@@ -124,8 +114,4 @@
   \renewcommand{\l@chapter}   {\@dottedtocline{0}{0pt}{1.5\zw}}%
   \renewcommand{\l@section}   {\@dottedtocline{1}{0pt}{2\zw}}%
   \renewcommand{\l@subsection}{\@dottedtocline{2}{0pt}{2.5\zw}}%
-  \hypersetup{%
-    pdftitle  = {\tpu@thesistitle},%
-    pdfauthor = {\tpu@authorname},%
-  }%
 }
