@@ -82,3 +82,11 @@ pnpm lint
 ```
 
 各自のユースケースに合わせて[`.textlintrc.json`](.textlintrc.json)を調整すること．
+
+## フォーマット
+
+latexindentを使用した`*.tex`ファイルのフォーマットをサポートしている．
+
+```bash
+mise run format
+```

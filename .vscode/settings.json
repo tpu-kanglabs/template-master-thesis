@@ -22,10 +22,14 @@
   "latex-workshop.synctex.afterBuild.enabled": true,
   "latex-workshop.view.pdf.viewer": "tab",
   "latex-workshop.latex.autoClean.run": "never",
+  "latex-workshop.formatting.latex": "latexindent",
   "files.exclude": {
     "LICENSE": true,
     "pnpm-lock.yaml": true,
-    ".mise.toml": true,
     "node_modules": true,
-  }
+  },
+  "[latex]": {
+    "editor.defaultFormatter": "James-Yu.latex-workshop"
+  },
+  "editor.formatOnSave": true
 }

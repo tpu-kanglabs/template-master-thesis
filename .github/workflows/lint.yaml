@@ -39,3 +39,12 @@ jobs:
             reviewdog -f=checkstyle -name="textlint" \
               -reporter=${{ github.event_name == 'pull_request' && 'github-pr-review' || 'github-check' }} \
               -fail-level=any
+
+  latexindent:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/tpu-kanglabs/texlive:latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Run latexindent
+        run: mise run format-check
