@@ -1,6 +1,59 @@
 % !TEX root = ../thesis.tex
 \chapter{序論}
 
-\section{セクション}
+\section{基本書式}
 
 吾輩は猫である．名前はまだない．どこで生れたかとんと見当がつかぬ．何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している．
+
+\subsection{数式}
+
+オイラーの等式は式\ref{eq:euler}のように表される．
+
+\begin{equation}
+  e^{i\pi} + 1 = 0
+  \label{eq:euler}
+\end{equation}
+
+ここで，$e$は自然対数の底，$i$は虚数単位，$\pi$は円周率を表す．
+
+\subsection{図}
+
+図\ref{fig:logo}に東京工芸大学のロゴを示す．
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.5\textwidth]{figures/tpu-logo.jpg}
+  \caption{東京工芸大学のロゴ}
+  \label{fig:logo}
+\end{figure}
+
+\subsection{表}
+
+表\ref{tab:example}に表の例を示す．
+
+\begin{table}[ht]
+  \centering
+  \small
+  \caption{表の例}
+  \begin{tabular}{c|c|c|c}
+    \hline
+    A & B & C & D \\
+    \hline
+    1 & 2  & 3  & 4  \\
+    5 & 6  & 7  & 8  \\
+    \hline
+  \end{tabular}
+  \label{tab:example}
+\end{table}
+
+\subsection{文献の参照}
+
+Doeらは2024年の研究で，手法Aが有効であることを示した\cite{sample2024}．さらに山田らは手法Bが手法Aよりも優れていることを報告している\cite{yamada2025}．
+
+\subsection{箇条書き}
+
+\begin{itemize}
+  \item 項目1
+  \item 項目2
+  \item 項目3
+\end{itemize}
