@@ -2,6 +2,9 @@
 \ProvidesPackage{tpu-biblatex}[2026/05/29 v1.0 TPU biblatex IEEE customizations]
 
 %--- biblatex with IEEE style ---------------------------------------------------
+% autonum loads etextools which biblatex normally rejects; this opt-out suppresses
+% the incompatibility check so both packages can coexist.
+\providecommand{\blx@noerroretextools}{}
 \RequirePackage[
   backend=biber,
   style=ieee,

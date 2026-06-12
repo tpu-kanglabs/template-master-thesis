@@ -19,16 +19,9 @@
 \ProcessOptions\relax
 \LoadClass{jlreq}
 
-%--- Required packages ----------------------------------------------------------
-\RequirePackage{graphicx}
-\RequirePackage{amsmath,amssymb}
-\RequirePackage{booktabs}
+%--- Shared packages, metadata, bibliography, and PDF metadata ------------------
+\RequirePackage{tpu-common}
 \RequirePackage[compatibility=false]{caption}
-\RequirePackage[hidelinks]{hyperref}
-
-%--- Shared metadata and bibliography -------------------------------------------
-\RequirePackage{tpu-meta}
-\RequirePackage{tpu-biblatex}
 
 %--- Page / column settings -----------------------------------------------------
 \pagestyle{empty}
@@ -90,10 +83,3 @@
   }]%
 }
 
-%--- PDF metadata ---------------------------------------------------------------
-\AtBeginDocument{%
-  \hypersetup{%
-    pdftitle  = {\tpu@thesistitle},%
-    pdfauthor = {\tpu@authorname},%
-  }%
-}
