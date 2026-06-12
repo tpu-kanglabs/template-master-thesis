@@ -1,3 +1,9 @@
 [tools]
 node = "24"
 pnpm = "10"
+
+[tasks.format]
+run = "latexindent -c out -s --overwrite *.tex"
+
+[tasks.format-check]
+run = "latexindent -k -s -c out  *.tex"
