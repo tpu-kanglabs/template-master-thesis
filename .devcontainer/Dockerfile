@@ -15,4 +15,4 @@ RUN find /etc/apt -name '*.list' -o -name '*.sources' | \
     && rm -rf /var/lib/apt/lists/* \
     && curl https://mise.run | sh \
     && mise install \
-    && chmod -R a+rX /mise
+    && chmod -R a+rwX /mise
