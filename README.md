@@ -45,7 +45,7 @@
 
 ### その他
 
-本テンプレートは下記の環境を想定している．
+本テンプレートは下記がインストールされていることを想定している．
 
 - TeX Live 2025
 - [mise](https://mise.jdx.dev/)
@@ -61,6 +61,15 @@ mise abstract
 mise thesis
 # 両方
 mise all
+```
+
+または`latexmk`を直接使用できる．
+
+```bash
+# 要旨
+latexmk abstract.tex
+# 本文
+latexmk thesis.tex
 ```
 
 ## 文書の編集
