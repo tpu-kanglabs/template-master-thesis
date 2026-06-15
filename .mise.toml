@@ -29,17 +29,17 @@ sources = [
 description = "Compile everything"
 depends = ["abstract", "thesis"]
 
-[tasks."format.latex"]
+[tasks."format:latex"]
 run = "latexindent -c out -s --overwrite *.tex"
 [tasks.format]
 depends = ["format:*"]
 
-[tasks."format-check.latex"]
+[tasks."format-check:latex"]
 run = "latexindent -k -s -c out  *.tex"
 [tasks."format-check"]
 depends = ["format-check:*"]
 
-[tasks."lint.docs"]
+[tasks."lint:docs"]
 run = "pnpm lint"
 [tasks.lint]
 depends = ["lint:*"]

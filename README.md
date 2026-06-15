@@ -104,7 +104,7 @@ latexmk thesis.tex
 [textlint](https://textlint.org/)を使用した文章校正をサポートしている．
 
 ```bash
-mise lint.docs
+mise lint:docs
 ```
 
 各自のユースケースに合わせて[`.textlintrc.json`](.textlintrc.json)を調整すること．
@@ -114,5 +114,5 @@ mise lint.docs
 latexindentを使用した`*.tex`ファイルのフォーマットをサポートしている．
 
 ```bash
-mise format.latex
+mise format:latex
 ```
