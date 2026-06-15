@@ -2,8 +2,44 @@
 node = "24"
 pnpm = "10"
 
-[tasks.format]
-run = "latexindent -c out -s --overwrite *.tex"
+[tasks.abstract]
+description = "Compile the abstract"
+run = "latexmk abstract.tex"
+sources = [
+    "abstract.tex",
+    "meta.tex",
+    ".latexmkrc",
+    "bibliography/*.bib",
+    "figures/*",
+    "latex/*",
+]
+[tasks.thesis]
+description = "Compile the thesis"
+run = "latexmk thesis.tex"
+sources = [
+    "thesis.tex",
+    "meta.tex",
+    ".latexmkrc",
+    "bibliography/*.bib",
+    "figures/*",
+    "latex/*",
+    "chapters/*",
+]
+[tasks.all]
+description = "Compile everything"
+depends = ["abstract", "thesis"]
 
-[tasks.format-check]
+[tasks."format:latex"]
+run = "latexindent -c out -s --overwrite *.tex"
+[tasks.format]
+depends = ["format:*"]
+
+[tasks."format-check:latex"]
 run = "latexindent -k -s -c out  *.tex"
+[tasks."format-check"]
+depends = ["format-check:*"]
+
+[tasks."lint:docs"]
+run = "pnpm lint"
+[tasks.lint]
+depends = ["lint:*"]

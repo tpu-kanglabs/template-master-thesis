@@ -43,6 +43,35 @@
 > [!WARNING]
 > Overleafでの動作は未検証である．
 
+### その他
+
+本テンプレートは下記がインストールされていることを想定している．
+
+- TeX Live 2025
+- [mise](https://mise.jdx.dev/)
+
+`mise install`を実行して必要なツールをインストールすること．
+
+## 文書のコンパイル
+
+```bash
+# 要旨
+mise abstract
+# 本文
+mise thesis
+# 両方
+mise all
+```
+
+または`latexmk`を直接使用できる．
+
+```bash
+# 要旨
+latexmk abstract.tex
+# 本文
+latexmk thesis.tex
+```
+
 ## 文書の編集
 
 タイトルや著者情報については[`meta.tex`](meta.tex)を編集する．本文を分割する場合は[`chapters/`](./chapters)に配置する．
@@ -64,29 +93,26 @@
 }
 ```
 
-### コンパイル
+## ツール
 
-```bash
-# 要旨
-latexmk abstract.tex
-# 本文
-latexmk thesis.tex
-```
+執筆体験を向上させるために，いくつかのツールをセットアップしている．
 
-## 文章校正
+頻繁に使用するツールは[mise Tasks](https://mise.jdx.dev/tasks/)を用いて実行できる．各自のユースケースに合わせて[`.mise.toml`](.mise.toml)を調整すること．
+
+### 文章校正
 
 [textlint](https://textlint.org/)を使用した文章校正をサポートしている．
 
 ```bash
-pnpm lint
+mise lint:docs
 ```
 
 各自のユースケースに合わせて[`.textlintrc.json`](.textlintrc.json)を調整すること．
 
-## フォーマット
+### フォーマット
 
 latexindentを使用した`*.tex`ファイルのフォーマットをサポートしている．
 
 ```bash
-mise run format
+mise format:latex
 ```
