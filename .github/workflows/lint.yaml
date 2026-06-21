@@ -15,7 +15,7 @@ on:
       - .github/workflows/lint.yaml
       - "prh/*.yml"
 jobs:
-  lint:
+  textlint:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -40,11 +40,13 @@ jobs:
               -reporter=${{ github.event_name == 'pull_request' && 'github-pr-review' || 'github-check' }} \
               -fail-level=any
 
-  latexindent:
+  pre-commit:
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/tpu-kanglabs/texlive:latest
     steps:
       - uses: actions/checkout@v6
       - name: Run latexindent
-        run: mise run format-check
+        uses: pre-commit/action@v3.0.1
+        with:
+          extra_args: --all-files
