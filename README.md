@@ -7,6 +7,7 @@
 - LuaLaTeX / [jlreq](https://tug.org/docs/latex/jlreq/jlreq-ja.html)準拠
 - Dockerに対応
 - [textlint](https://textlint.org/)による文章校正
+- Python実行環境
 - GitHub Actionsによる自動ビルドおよびLint
 - Claude Codeに対応
 
@@ -97,22 +98,34 @@ latexmk thesis.tex
 
 執筆体験を向上させるために，いくつかのツールをセットアップしている．
 
-頻繁に使用するツールは[mise Tasks](https://mise.jdx.dev/tasks/)を用いて実行できる．各自のユースケースに合わせて[`.mise.toml`](.mise.toml)を調整すること．
+主なツールは下記のように[mise Tasks](https://mise.jdx.dev/tasks/)を用いて実行できる．
 
-### 文章校正
+### ランタイム
 
-[textlint](https://textlint.org/)を使用した文章校正をサポートしている．
+Node.jsとPython（[uv](https://docs.astral.sh/uv/)）を使用できる．
+
+### Linter
+
+コードのLintに加えて，[textlint](https://textlint.org/)による文章校正もサポートしている．
 
 ```bash
+# 文章校正
 mise lint:docs
+# Pythonコード
+mise lint:py
+# 両方
+mise lint
 ```
 
-各自のユースケースに合わせて[`.textlintrc.json`](.textlintrc.json)を調整すること．
+### Formatter
 
-### フォーマット
-
-latexindentを使用した`*.tex`ファイルのフォーマットをサポートしている．
+コードだけでなく，latexindentを使用した`*.tex`ファイルのフォーマットをサポートしている．
 
 ```bash
+# latex
 mise format:latex
+# Pythonコード
+mise format:py
+# 両方
+mise format
 ```

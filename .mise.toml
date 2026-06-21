@@ -1,6 +1,7 @@
 [tools]
 node = "24"
 pnpm = "10"
+uv = "0.11"
 
 [tasks.abstract]
 description = "Compile the abstract"
@@ -31,15 +32,21 @@ depends = ["abstract", "thesis"]
 
 [tasks."format:latex"]
 run = "latexindent -c out -s --overwrite *.tex"
+[tasks."format:py"]
+run = "uv run ruff format"
 [tasks.format]
 depends = ["format:*"]
 
 [tasks."format-check:latex"]
 run = "latexindent -k -s -c out  *.tex"
+[tasks."format-check:py"]
+run = "uv run ruff format --check"
 [tasks."format-check"]
 depends = ["format-check:*"]
 
 [tasks."lint:docs"]
 run = "pnpm lint"
+[tasks."lint:py"]
+run = ["uv run ruff check", "uv run pyrefly check --summarize-errors"]
 [tasks.lint]
 depends = ["lint:*"]

@@ -11,7 +11,8 @@
     "vscode": {
       "extensions": [
         "James-Yu.latex-workshop",
-        "3w36zj6.textlint"
+        "3w36zj6.textlint",
+        "tamasfe.even-better-toml"
       ]
     }
   }
