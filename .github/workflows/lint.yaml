@@ -37,7 +37,5 @@ jobs:
       image: ghcr.io/tpu-kanglabs/texlive:latest
     steps:
       - uses: actions/checkout@v6
-      - name: Run latexindent
-        uses: pre-commit/action@v3.0.1
-        with:
-          extra_args: --all-files
+      - name: Run pre-commit
+        run: mise pre-commit
