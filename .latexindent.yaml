@@ -23,7 +23,7 @@
 #------------------------------------------
 
 # this is a local setting file that overwrites the default setting written in latexindent/defaultSettings.yaml.
-# location of that file can be found by running `latexindent -vv`. 
+# location of that file can be found by running `latexindent -vv`.
 # as the official doc suggests, you should not modify the default file but edit local one.
 
 #------------------------------------------
@@ -74,7 +74,7 @@ lookForAlignDelims:
       justification: left
       alignFinalDoubleBackSlash: 0
       dontMeasure: 0
-      delimiterRegEx: (?<!\\)(&[\+\-\*=<>]?) # e.g., &=, &< 
+      delimiterRegEx: (?<!\\)(&[\+\-\*=<>]?) # e.g., &=, &<
       delimiterJustification: left
       lookForChildCodeBlocks: 1
       alignContentAfterDoubleBackSlash: 0
@@ -152,7 +152,7 @@ modifyLineBreaks:
         manipulateSentences: 1              # 0/1
         removeSentenceLineBreaks: 1         # 0/1
         multipleSpacesToSingle: 1           # 0/1
-        sentencesBeginWith:            
+        sentencesBeginWith:
             A-Z: 1                          # 0/1
             a-z: 1                          # 0/1
             other: [0-9"']                # regex
@@ -170,10 +170,10 @@ modifyLineBreaks:
             EndStartsOnOwnLine: 4           # -1,0,1,2,3,4
         # "outer" math envs, such as equation and gather, are set to have a preceding blank line, so that they are more easily distinguished by a neighboring sentence
         # while "inner" math envs, such as aligned and cases, are set to have no additional blank line around them (use default)(see the example below).
-        # 
+        #
         # Example
-        # 
-        # some sentence. 
+        #
+        # some sentence.
         # [a blank line here is useful to distinguish a preceding sentence and math env. So we set BeginStartsOnOwnLine: 4]
         # \begin{equation*}
         #   %[need a blank line here? I don't think so.]
@@ -182,11 +182,11 @@ modifyLineBreaks:
         #                 &= \dim \mathbb{R}^{k} \\
         #   \end{aligned}
         #   %[need a blank line here? I don't think so.]
-        # \end{equation*} 
+        # \end{equation*}
         # % [a blank line here means the following line is a new paragraph, which is not always the case. So we would like to place comment mark % instead to create space, but the functionality is not provided by latexindent.]
         # some sentences
-        # 
-        equation:                          
+        #
+        equation:
             BeginStartsOnOwnLine: 4         # -1,0,1,2,3,4
             BodyStartsOnOwnLine: 1          # -1,0,1,2,3,4
             EndStartsOnOwnLine: 1           # -1,0,1,2,3,4
@@ -196,19 +196,19 @@ modifyLineBreaks:
             BodyStartsOnOwnLine: 1          # -1,0,1,2,3,4
             EndStartsOnOwnLine: 1           # -1,0,1,2,3,4
             EndFinishesWithLineBreak: 1     # -1,0,1,2,3,4
-        gather:                          
+        gather:
             BeginStartsOnOwnLine: 4         # -1,0,1,2,3,4
             BodyStartsOnOwnLine: 1          # -1,0,1,2,3,4
             EndStartsOnOwnLine: 1           # -1,0,1,2,3,4
             EndFinishesWithLineBreak: 1     # -1,0,1,2,3,4
-        gather*:                          
+        gather*:
             BeginStartsOnOwnLine: 4         # -1,0,1,2,3,4
             BodyStartsOnOwnLine: 1          # -1,0,1,2,3,4
             EndStartsOnOwnLine: 1           # -1,0,1,2,3,4
             EndFinishesWithLineBreak: 1     # -1,0,1,2,3,4
 
 
-# replacements gets active only when latexindent is called with -r switch 
+# replacements gets active only when latexindent is called with -r switch
 replacements:
         #
         #--------------------------------------------------#
@@ -218,17 +218,17 @@ replacements:
     -   substitution: |-
           s/(?<=\\begin\{document\})(.*?)(?=\\end\{document\})/
             my $body = $1;
-        # Condense consecutive white spaces into one
+          # Condense consecutive white spaces into one
             $body =~ s@\h{2,}@ @g;
-        # Remove leading and trailing white spaces in braces "{}"
+          # Remove leading and trailing white spaces in braces "{}"
             $body =~ s@\{\h*(.*?)\h*\}@\{$1\}@g;
-        # Insert half-width space at every end of brace if it is followed by a command or a character
+          # Insert half-width space at every end of brace if it is followed by a command or a character
             $body =~ s@(?<=\)|\}|])(\\?[0-9a-zA-Z])@ $1@g;
-        # Remove space before comma and punctuation
+          # Remove space before comma and punctuation
             $body =~ s@\h*([,\.])@$1@g;
-        # add space before "\" (avoiding \left\rvert)
+          # add space before "\" (avoiding \left\rvert)
             $body =~ s@(?<=\w)\\(?![rl][Vv]ert)@ \\@g;
-        # place %\n at the next line math env ends, in order to create visual space between math env and text env
+          # place %\n at the next line math env ends, in order to create visual space between math env and text env
             $body =~ s@(?<=\\end\{equation\*\}|\\end\{gather\}|\\end\{gather\*\})(.*)\n(?!%)@$1\n%\n@g;
             $body;/sxge;
         lookForThis: 1
@@ -241,8 +241,8 @@ replacements:
     -   substitution: |- # text env = document env minus math env
           s/(?<=\\begin\{document\}|\\\)|\\end\{equation\}|\\end\{equation\*\}|\\end\{gather\}|\\end\{gather\*\})(.*?)(?=\\end\{document\}|\\\(|\\begin\{equation\}|\\begin\{equation\*\}|\\begin\{gather\}|\\begin\{gather\*\})/
             my $body = $1;
-        # condense consecutive blank lines into one
-        # this is a symptomatic treatment.
+          # condense consecutive blank lines into one
+          # this is a symptomatic treatment.
             $body =~ s@(?:\h*\n\h*){2,}\n@\n\n@gs;
             $body;/sxge;
         lookForThis: 0
@@ -254,7 +254,7 @@ replacements:
         #
         # Replacements for \begin{env}-\end{env} style math environment.
         #
-        # Suppose we would like to apply some regular expressions to a formula inside a nested math environment 
+        # Suppose we would like to apply some regular expressions to a formula inside a nested math environment
         # like \begin{equation*}\begin{aligned}f(x)&=g(x)+h(x)\\&=0\end{aligned}\end{equation*}.
         # (Consider non-nested environment as a trivial nested environment.)
         # the following code classifies formula ($body), \begin{env} ($begin) and \end{env} ($end) statements from the nested environments in a recursive way.
@@ -266,44 +266,44 @@ replacements:
         substitution: |-
           s/(\\begin\{(?:equation|gather)\*?\}[\h\n]*)(?<!\n)(.*?)(?!\h)([\h\n]*\\end\{(?:equation|gather)\*?\}[\h\n]*)/
             my ($begin, $body, $end) = ($1, $2, $3);
-        # name of environment that could come into equation or gather.
+          # name of environment that could come into equation or gather.
             my @envs = ("aligned","cases");
-        # choose only envs that are present in the body
-	          @envs = grep { contain_env($_, $body) } @envs;
-        # function to cut \begin\end in body and paste in \begin and \end 
+          # choose only envs that are present in the body
+            @envs = grep { contain_env($_, $body) } @envs;
+          # function to cut \begin\end in body and paste in \begin and \end
             sub process_gather {
               my ($b, $c, $e, $be, $en) = @_;
               $$be .= $b;
               $$en = $e.$$en;
               return $c;
             }
-        # test if body contains \begin{env*?} statement
+          # test if body contains \begin{env*?} statement
             sub contain_env {
               my ($env, $body) = @_;
               return index($body, "\\begin\{".$env) != -1;
             }
-        # recursively cut out \begin and \end from body and add them to $begin and $end
+          # recursively cut out \begin and \end from body and add them to $begin and $end
             while (1){
               foreach my $env (@envs){
-                if (contain_env($env, $body)){ 
+                if (contain_env($env, $body)){
                   $body =~ s@([\h\n]*?\\begin\{$env\*?\}[\h\n]*)(?<!\n)(.*?)(?!\h)([\h\n]*\\end\{$env\*?\}[\h\n]*)@process_gather($1, $2, $3, \$begin, \$end)@egxs;
                   next;
                 }
               }
               last;
             }
-        # add space around operators +-=/*\\ if they are not paired with &
+          # add space around operators +-=/*\\ if they are not paired with &
             $body =~ s@\h*(?<![&\{:])([\+\-=\/\*])(?![\:}&])\h*@ $1 @sg;
-        # Add braces to superscripts and subscripts
+          # Add braces to superscripts and subscripts
             $body =~ s@(\^|\_)([a-zA-Z0-9]+)@$1\{$2\}@sg;
-        # add space around <>
+          # add space around <>
             $body =~ s@(?<!\\left|\\right)\h*(<|>)\h*(?!\\left|\\right)@ $1 @sg;
-        # remove blank line (this is done by modifyLineBreaks)
+          # remove blank line (this is done by modifyLineBreaks)
             # $body =~ s@(?:\h*\n\h*){2,}@\n@g;
             $begin . $body . $end /sxge;
         lookForThis: 1
         when: before
-        # 
+        #
         #--------------------------------------------------#
         #                 INLINE MATH                      #
         #--------------------------------------------------#
@@ -312,16 +312,16 @@ replacements:
     -
         substitution: |-
           s/(?<=\\\()\h*(.*?)\h*(?=\\\))/
-        # ↑ this expression is solely for \( x \) style inline math.
+          # ↑ this expression is solely for \( x \) style inline math.
             my $body = $1;
-        # Insert space at the beginning&end of inline math env
-        # \(x\) -> \( x \)
+          # Insert space at the beginning&end of inline math env
+          # \(x\) -> \( x \)
             $body = " ". $body . " ";
-        # Add braces to superscripts and subscripts
+          # Add braces to superscripts and subscripts
             $body =~ s@(\^|\_)([a-zA-Z0-9]+)@$1\{$2\}@sg;
-        # add a single space around + - = * /
+          # add a single space around + - = * /
             $body =~ s@\h*(?<![\{:])([\+\-=\/\*])(?![\}:])\h*@ $1 @sg;
-        # add space around <>
+          # add space around <>
             $body =~ s@(?<!\\left|\\right)\h*(<|>)\h*(?!\\left|\\right)@ $1 @sg;
             $body;/sxge
         lookForThis: 1
@@ -338,7 +338,7 @@ fineTuning:
       betterFullStop: |-
         (?x)                                # ignore spaces in the below
         (?:                                 #
-          \.\)                              # .) 
+          \.\)                              # .)
           (?!\h*[a-z\\])                    # not *followed by* a-z and \
         )                                   #
         |                                   # OR
@@ -354,7 +354,7 @@ fineTuning:
               (?:[wW]\.[rR]\.[tT])          # w.r.t OR W.r.t OR w.R.t OR w.r.T OR W.R.t OR W.r.T OR w.R.T OR W.R.T
             )                               #
           )                                 #
-        )                                   # 
+        )                                   #
         \.                                  # .
         (?!                                 # not *followed by*
           (?:                               #

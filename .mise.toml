@@ -50,3 +50,6 @@ run = "pnpm lint"
 run = ["uv run ruff check", "uv run pyrefly check --summarize-errors"]
 [tasks.lint]
 depends = ["lint:*"]
+
+[tasks."pre-commit"]
+run = "uv run pre-commit run --all-files"

@@ -129,3 +129,14 @@ mise format:py
 # 両方
 mise format
 ```
+
+### pre-commit
+
+[pre-commit](https://pre-commit.com/)を使用して，コミット前に自動でLintやFormatterを実行できる．
+
+```bash
+# hookの登録
+uv run pre-commit install
+# 手動実行
+mise pre-commit
+```
