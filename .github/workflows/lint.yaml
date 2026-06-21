@@ -2,18 +2,18 @@ name: lint
 on:
   pull_request:
     paths:
-      - '**/*.md'
-      - '**/*.tex'
+      - "**/*.md"
+      - "**/*.tex"
       - .github/workflows/lint.yaml
-      - 'prh/*.yml'
+      - "prh/*.yml"
   push:
     branches:
       - main
     paths:
-      - '**/*.md'
-      - '**/*.tex'
+      - "**/*.md"
+      - "**/*.tex"
       - .github/workflows/lint.yaml
-      - 'prh/*.yml'
+      - "prh/*.yml"
 jobs:
   lint:
     runs-on: ubuntu-latest
