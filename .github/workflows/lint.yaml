@@ -37,5 +37,7 @@ jobs:
       image: ghcr.io/tpu-kanglabs/texlive:latest
     steps:
       - uses: actions/checkout@v6
+      - name: Configure git safe directory
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - name: Run pre-commit
         run: mise pre-commit
