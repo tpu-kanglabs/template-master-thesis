@@ -31,14 +31,14 @@ description = "Compile everything"
 depends = ["abstract", "thesis"]
 
 [tasks."format:latex"]
-run = "latexindent -c out -s --overwrite *.tex"
+run = "latexindent -c out -s --overwrite *.tex chapters/*.tex"
 [tasks."format:py"]
 run = "uv run ruff format"
 [tasks.format]
 depends = ["format:*"]
 
 [tasks."format-check:latex"]
-run = "latexindent -k -s -c out  *.tex"
+run = "latexindent -k -s -c out *.tex chapters/*.tex"
 [tasks."format-check:py"]
 run = "uv run ruff format --check"
 [tasks."format-check"]
