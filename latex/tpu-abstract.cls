@@ -82,4 +82,3 @@
     \vspace{0.8\baselineskip}%
   }]%
 }
-

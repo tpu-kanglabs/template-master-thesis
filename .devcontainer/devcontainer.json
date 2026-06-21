@@ -1,17 +1,15 @@
 {
   "name": "master-thesis",
   "image": "ghcr.io/tpu-kanglabs/texlive:latest",
-  // "build": {
-  //   "dockerfile": "Dockerfile"
-  // },
   "remoteUser": "texlive",
   "postCreateCommand": "mise trust",
-  "postStartCommand": "pnpm i --frozen-lockfile",
+  "postStartCommand": "pnpm i --frozen-lockfile && uv sync",
   "customizations": {
     "vscode": {
       "extensions": [
         "James-Yu.latex-workshop",
-        "3w36zj6.textlint"
+        "3w36zj6.textlint",
+        "tamasfe.even-better-toml"
       ]
     }
   }

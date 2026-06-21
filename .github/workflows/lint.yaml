@@ -1,21 +1,12 @@
 name: lint
 on:
   pull_request:
-    paths:
-      - '**/*.md'
-      - '**/*.tex'
-      - .github/workflows/lint.yaml
-      - 'prh/*.yml'
   push:
     branches:
       - main
-    paths:
-      - '**/*.md'
-      - '**/*.tex'
-      - .github/workflows/lint.yaml
-      - 'prh/*.yml'
+
 jobs:
-  lint:
+  textlint:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -40,11 +31,13 @@ jobs:
               -reporter=${{ github.event_name == 'pull_request' && 'github-pr-review' || 'github-check' }} \
               -fail-level=any
 
-  latexindent:
+  pre-commit:
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/tpu-kanglabs/texlive:latest
     steps:
       - uses: actions/checkout@v6
-      - name: Run latexindent
-        run: mise run format-check
+      - name: Configure git safe directory
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+      - name: Run pre-commit
+        run: mise pre-commit
