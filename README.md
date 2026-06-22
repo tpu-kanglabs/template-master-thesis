@@ -1,6 +1,9 @@
 # 修士論文のLaTeXテンプレート
 
-東京工芸大学の大学院生のための修士論文のLaTeXテンプレートである．
+東京工芸大学の大学院生のための修士論文のLaTeXテンプレートである．クラスファイルだけでなく，包括的な執筆環境を提供する．
+
+> [!WARNING]
+> 本テンプレートは教務課などの認証を受けたものではない．使用する場合は必ず公式の書式を確認すること．
 
 ## 機能
 
@@ -141,7 +144,22 @@ uv run pre-commit install
 mise pre-commit
 ```
 
-## Dev ContainerでWindowsフォントを使用する
+## Dockerサポート
+
+本テンプレートでは[`ghcr.io/tpu-kanglabs/texlive`](https://github.com/tpu-kanglabs/template-master-thesis/pkgs/container/texlive)を使用したDev Container設定を提供している．既定では`latest`タグを使用するが，より高い再現性を求める場合は，特定のdigestを指定することを推奨する．
+
+なお，下記のようにDockerを直接使用してコンパイルできる．
+
+```bash
+docker run --rm \
+    -u texlive \
+    -v "$(pwd):/workdir" \
+    -w /workdir \
+    ghcr.io/tpu-kanglabs/texlive:latest \
+    latexmk thesis.tex
+```
+
+### Windowsフォントを使用する
 
 本学では，要旨にMSゴシックとMS明朝を使用することが求められている．しかし，OS互換性の観点から本テンプレートのDev Containerでは，WSLを使用していてもこれらのフォントが使用できない．このため以下の手順を踏む必要がある．
 
@@ -150,14 +168,26 @@ mise pre-commit
 ```json
 {
   "mounts": [
-    "source=/mnt/c/Windows/Fonts,target=/usr/local/share/fonts/windows,type=bind,consistency=cached"
+    "source=/mnt/c/Windows/Fonts,target=/usr/local/share/fonts/windows,type=bind"
   ],
 }
 ```
 
 その後コンテナをリビルドする．最後に要旨を再度コンパイルすることで，MSゴシックとMS明朝を使用するようになる．
 
-なお，LinuxやmacOSではMSフォントを利用できない．代替として[原ノ味フォント](https://texwiki.texjp.org/?%E5%8E%9F%E3%83%8E%E5%91%B3%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88)が自動的に使用される．
+Dockerコマンドでは下記のようにする．
+
+```bash
+docker run --rm \
+    -u texlive \
+    -v "$(pwd):/workdir" \
+    -w /workdir \
+    --mount source=/mnt/c/Windows/Fonts,target=/usr/local/share/fonts/windows,type=bind \
+    ghcr.io/tpu-kanglabs/texlive:latest \
+    latexmk abstract.tex
+```
+
+なお，Linux（非WSL）やmacOSではMSフォントを利用できない．代替として[原ノ味フォント](https://texwiki.texjp.org/?%E5%8E%9F%E3%83%8E%E5%91%B3%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88)が自動的に使用される．
 
 > [!NOTE]
 > MSフォントが使用されるのは要旨のみである．本文では引き続き原ノ味フォントが使用される．
