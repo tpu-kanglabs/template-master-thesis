@@ -32,8 +32,18 @@
     "*cache": true,
     "uv.lock": true
   },
+  "editor.formatOnSave": true,
   "[latex]": {
-    "editor.defaultFormatter": "James-Yu.latex-workshop"
+    "editor.defaultFormatter": "James-Yu.latex-workshop",
+    "editor.wordWrap": "on",
+    "editor.wordSeparators": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`~?。．、，（）「」『』［］｛｝《》てにをはがのともへでや ",
+    "editor.unicodeHighlight.allowedCharacters": {
+      "．": true,
+      "，": true
+    },
+    "editor.stickyScroll.enabled": true
   },
-  "editor.formatOnSave": true
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff"
+  }
 }
