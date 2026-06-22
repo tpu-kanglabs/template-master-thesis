@@ -140,3 +140,24 @@ uv run pre-commit install
 # 手動実行
 mise pre-commit
 ```
+
+## Dev ContainerでWindowsフォントを使用する
+
+本学では，要旨にMSゴシックとMS明朝を使用することが求められている．しかし，OS互換性の観点から本テンプレートのDev Containerでは，WSLを使用していてもこれらのフォントが使用できない．このため以下の手順を踏む必要がある．
+
+まず，[`.devcontainer/devcontainer.json`](.devcontainer/devcontainer.json)に以下を追記する．
+
+```json
+{
+  "mounts": [
+    "source=/mnt/c/Windows/Fonts,target=/usr/local/share/fonts/windows,type=bind,consistency=cached"
+  ],
+}
+```
+
+その後コンテナをリビルドする．最後に要旨を再度コンパイルすることで，MSゴシックとMS明朝を使用するようになる．
+
+なお，LinuxやmacOSではMSフォントを利用できない．代替として[原ノ味フォント](https://texwiki.texjp.org/?%E5%8E%9F%E3%83%8E%E5%91%B3%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88)が自動的に使用される．
+
+> [!NOTE]
+> MSフォントが使用されるのは要旨のみである．本文では引き続き原ノ味フォントが使用される．

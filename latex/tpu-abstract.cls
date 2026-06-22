@@ -19,6 +19,19 @@
 \ProcessOptions\relax
 \LoadClass{jlreq}
 
+%--- Japanese font setup --------------------------------------------------------
+% Title uses Gothic (\gtfamily); body uses Mincho (\mcfamily, the default).
+% Falls back to HaranoAji (bundled in TeX Live 2020+) when MS fonts are absent
+% (e.g. Linux devcontainers).
+\RequirePackage{luatexja-fontspec}
+\IfFontExistsTF{MS Mincho}{%
+  \setmainjfont[BoldFont=MS Gothic]{MS Mincho}%
+  \setsansjfont[BoldFont=MS Gothic]{MS Gothic}%
+}{%
+  \setmainjfont[BoldFont=HaranoAjiGothic-Regular]{HaranoAjiMincho-Regular}%
+  \setsansjfont[BoldFont=HaranoAjiGothic-Regular]{HaranoAjiGothic-Regular}%
+}
+
 %--- Shared packages, metadata, bibliography, and PDF metadata ------------------
 \RequirePackage{tpu-common}
 \RequirePackage[compatibility=false]{caption}
@@ -71,7 +84,7 @@
   \twocolumn[{%
     \thispagestyle{empty}%
     \begin{center}%
-      {\large\bfseries\tpu@thesistitle\par}%
+      {\large\gtfamily\bfseries\tpu@thesistitle\par}%
     \end{center}%
     \vspace{0.6\baselineskip}%
     \begin{flushright}%
