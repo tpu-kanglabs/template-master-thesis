@@ -18,6 +18,7 @@
     }
   ],
   "latex-workshop.latex.outDir": "%DIR%/out",
+  "latex-workshop.latex.auxDir": "%DIR%/out/aux",
   "latex-workshop.latex.autoBuild.run": "onSave",
   "latex-workshop.synctex.afterBuild.enabled": true,
   "latex-workshop.view.pdf.viewer": "tab",
@@ -32,8 +33,18 @@
     "*cache": true,
     "uv.lock": true
   },
+  "editor.formatOnSave": true,
   "[latex]": {
-    "editor.defaultFormatter": "James-Yu.latex-workshop"
+    "editor.defaultFormatter": "James-Yu.latex-workshop",
+    "editor.wordWrap": "on",
+    "editor.wordSeparators": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`~?。．、，（）「」『』［］｛｝《》てにをはがのともへでや ",
+    "editor.unicodeHighlight.allowedCharacters": {
+      "．": true,
+      "，": true
+    },
+    "editor.stickyScroll.enabled": true
   },
-  "editor.formatOnSave": true
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff"
+  }
 }

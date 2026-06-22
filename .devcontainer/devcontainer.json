@@ -9,7 +9,9 @@
       "extensions": [
         "James-Yu.latex-workshop",
         "3w36zj6.textlint",
-        "tamasfe.even-better-toml"
+        "tamasfe.even-better-toml",
+        "charliermarsh.ruff",
+        "meta.pyrefly"
       ]
     }
   }
