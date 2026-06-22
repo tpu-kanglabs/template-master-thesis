@@ -7,10 +7,12 @@ on:
     paths:
       - .devcontainer/Dockerfile
       - .mise.toml
+      - .github/workflows/docker.yml
   pull_request:
     paths:
       - .devcontainer/Dockerfile
       - .mise.toml
+      - .github/workflows/docker.yml
 
 jobs:
   build:
