@@ -18,6 +18,7 @@
     }
   ],
   "latex-workshop.latex.outDir": "%DIR%/out",
+  "latex-workshop.latex.auxDir": "%DIR%/out/aux",
   "latex-workshop.latex.autoBuild.run": "onSave",
   "latex-workshop.synctex.afterBuild.enabled": true,
   "latex-workshop.view.pdf.viewer": "tab",

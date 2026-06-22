@@ -5,5 +5,6 @@ $biber           = 'biber %O %B';
 $pdf_mode        = 4;
 $postscript_mode = $dvi_mode = 0;
 $out_dir         = 'out';
+$aux_dir         = 'out/aux';
 
 ensure_path('TEXINPUTS', './latex//');
