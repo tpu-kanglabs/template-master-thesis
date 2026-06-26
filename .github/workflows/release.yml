@@ -57,6 +57,7 @@ jobs:
 
   docker:
     runs-on: ubuntu-latest
+    if: github.repository == 'tpu-kanglabs/template-master-thesis'
     steps:
       - uses: actions/checkout@v7
 

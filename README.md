@@ -191,3 +191,17 @@ docker run --rm \
 
 > [!NOTE]
 > MSフォントが使用されるのは要旨のみである．本文では引き続き原ノ味フォントが使用される．
+
+### イメージをカスタマイズする
+
+[`Dockerfile`](.devcontainer/Dockerfile) を編集することで，Dev Container のイメージをカスタマイズできる．さらに，以下のように [`devcontainer.json`](.devcontainer/devcontainer.json) の `image` を `build` に変更すると，Dockerfile からイメージをビルドするようになる．
+
+```json
+{
+  "build": {
+    "dockerfile": "Dockerfile"
+  }
+}
+```
+
+また，作成したイメージをレジストリにプッシュすることで，Dev Container のイメージを共有できる．CI/CD の設定は [`docker.yml`](.github/workflows/docker.yml) と [`release.yml`](.github/workflows/release.yml) に記述されている．自身のリポジトリでイメージをpushする場合は，`github.repository == 'tpu-kanglabs/template-master-thesis'` という条件を削除すればよい．
