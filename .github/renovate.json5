@@ -9,12 +9,19 @@
     // Node ランタイム: mise の node/pnpm と package.json の packageManager を 1 PR に集約
     {
       matchManagers: ["mise"],
+      matchPackageNames: ["node", "github:pnpm/pnpm"],
       groupName: "node runtime",
     },
     {
       matchManagers: ["npm"],
       matchDepTypes: ["packageManager"],
       groupName: "node runtime",
+    },
+    // mise の uv は Node ランタイムとは別 PR にする
+    {
+      matchManagers: ["mise"],
+      matchPackageNames: ["uv"],
+      groupName: "uv",
     },
     // npm 依存 (textlint 系) を 1 PR に集約
     {
