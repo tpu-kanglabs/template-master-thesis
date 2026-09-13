@@ -1,6 +1,6 @@
 [tools]
 node = "24.19.0"
-"github:pnpm/pnpm" = "11.9.0"
+"github:pnpm/pnpm" = "11.27.0"
 uv = "0.11"
 
 [tasks.abstract]
