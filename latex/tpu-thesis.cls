@@ -3,7 +3,7 @@
 
 %--- Class option handling ------------------------------------------------------
 % Set defaults for jlreq before processing user options so they can override
-\PassOptionsToClass{paper=a4paper,fontsize=12pt,report,open=any,oneside}{jlreq}
+\PassOptionsToClass{paper=a4paper,fontsize=12pt,report,openany,oneside}{jlreq}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{jlreq}}
 \ProcessOptions\relax
 \LoadClass{jlreq}
@@ -63,7 +63,9 @@
 %--- Front/main matter commands (report mode does not define these) -------------
 % \frontmatter : roman page numbering for TOC etc.
 % \mainmatter  : arabic page numbering, reset to 1, for body chapters
-% \backmatter  : unnumbered closing sections (acknowledgements, bibliography)
+% \backmatter  : only starts a new page before the closing sections; it does NOT
+%                 disable chapter numbering. Use \chapter* (acknowledgements
+%                 environment) and \printreferences for unnumbered output.
 \newcommand{\frontmatter}{%
   \clearpage
   \pagenumbering{roman}%
