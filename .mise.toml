@@ -30,6 +30,13 @@ sources = [
 description = "Compile everything"
 depends = ["abstract", "thesis"]
 
+[tasks."diff:head"]
+description = "Build diff PDFs against HEAD"
+run = "scripts/latexdiff.sh HEAD"
+[tasks."diff:main"]
+description = "Build diff PDFs against main"
+run = "scripts/latexdiff.sh main"
+
 [tasks."format:latex"]
 run = "latexindent -c out -s --overwrite *.tex chapters/*.tex"
 [tasks."format:py"]
