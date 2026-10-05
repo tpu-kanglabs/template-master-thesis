@@ -76,6 +76,17 @@ latexmk abstract.tex
 latexmk thesis.tex
 ```
 
+### 差分PDF
+
+[latexdiff-vc](https://ctan.org/pkg/latexdiff)を使用して，変更箇所を示した差分PDFを`out/`に出力できる．
+
+```bash
+# HEADとの差分
+mise diff:head
+# mainとの差分
+mise diff:main
+```
+
 ## 文書の編集
 
 タイトルや著者情報については[`meta.tex`](meta.tex)を編集する．本文を分割する場合は[`chapters/`](./chapters)に配置する．
