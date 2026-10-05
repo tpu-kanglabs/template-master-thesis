@@ -34,12 +34,27 @@
 
 %--- Shared packages, metadata, bibliography, and PDF metadata ------------------
 \RequirePackage{tpu-common}
-\RequirePackage[compatibility=false]{caption}
 
 %--- Page / column settings -----------------------------------------------------
 \pagestyle{empty}
 \setlength{\columnsep}{8mm}
-\captionsetup{font=small, labelfont=bf}
+% Caption appearance (formerly caption package: font=small, labelfont=bf).
+% Uses jlreq's own caption keys; "図 1: caption" with captions below figures and
+% above tables, separated by 10pt like the standard LaTeX classes.
+\renewcommand*{\fnum@figure}{\figurename\nobreakspace\thefigure}
+\renewcommand*{\fnum@table}{\tablename\nobreakspace\thetable}
+\jlreqsetup{%
+  caption_font=\small,
+  caption_label_font=\bfseries,
+  caption_label_format={#1:},
+  caption_after_label_space=0.33em,
+}
+\setlength{\abovecaptionskip}{2pt}
+\setlength{\belowcaptionskip}{0pt}
+\AddToHook{env/table/begin}{%
+  \setlength{\abovecaptionskip}{0pt}%
+  \setlength{\belowcaptionskip}{8pt}%
+}
 
 %--- Section heading styles -----------------------------------------------------
 % Labels: "1." / "1.1" / "1.1.1" — body-size bold, compact spacing.
