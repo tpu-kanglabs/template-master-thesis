@@ -17,12 +17,6 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - uses: actions/cache@v6
-        with:
-          path: ~/.cache/biber
-          key: biber-${{ hashFiles('bibliography/*.bib') }}
-          restore-keys: biber-
-
       - name: Build thesis and abstract
         run: |
           latexmk thesis.tex

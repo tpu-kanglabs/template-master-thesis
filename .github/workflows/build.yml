@@ -28,74 +28,40 @@ permissions:
   pull-requests: write
 
 jobs:
-  build-thesis:
-    runs-on: ubuntu-latest
-    container:
-      image: ghcr.io/tpu-kanglabs/texlive:latest
-    outputs:
-      artifact-url: ${{ steps.upload.outputs.artifact-url }}
-    steps:
-      - uses: actions/checkout@v7
-
-      - uses: actions/cache@v6
-        with:
-          path: ~/.cache/biber
-          key: biber-thesis-${{ hashFiles('bibliography/*.bib') }}
-          restore-keys: biber-thesis-
-
-      - name: Build thesis
-        run: latexmk thesis.tex
-
-      - uses: actions/upload-artifact@v7
-        id: upload
-        with:
-          name: thesis-pdf
-          path: out/thesis.pdf
-
-  build-abstract:
-    runs-on: ubuntu-latest
-    container:
-      image: ghcr.io/tpu-kanglabs/texlive:latest
-    outputs:
-      artifact-url: ${{ steps.upload.outputs.artifact-url }}
-    steps:
-      - uses: actions/checkout@v7
-
-      - uses: actions/cache@v6
-        with:
-          path: ~/.cache/biber
-          key: biber-abstract-${{ hashFiles('bibliography/*.bib') }}
-          restore-keys: biber-abstract-
-
-      - name: Build abstract
-        run: latexmk abstract.tex
-
-      - uses: actions/upload-artifact@v7
-        id: upload
-        with:
-          name: abstract-pdf
-          path: out/abstract.pdf
-
-  build-diff:
-    if: github.event_name == 'pull_request'
+  build:
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/tpu-kanglabs/texlive:latest
     outputs:
       thesis-url: ${{ steps.upload-thesis.outputs.artifact-url }}
       abstract-url: ${{ steps.upload-abstract.outputs.artifact-url }}
+      thesis-diff-url: ${{ steps.upload-thesis-diff.outputs.artifact-url }}
+      abstract-diff-url: ${{ steps.upload-abstract-diff.outputs.artifact-url }}
     steps:
       - uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
-      - uses: actions/cache@v6
+      - name: Build thesis
+        run: latexmk thesis.tex
+
+      - name: Build abstract
+        run: latexmk abstract.tex
+
+      - uses: actions/upload-artifact@v7
+        id: upload-thesis
         with:
-          path: ~/.cache/biber
-          key: biber-diff-${{ hashFiles('bibliography/*.bib') }}
-          restore-keys: biber-diff-
+          name: thesis-pdf
+          path: out/thesis.pdf
+
+      - uses: actions/upload-artifact@v7
+        id: upload-abstract
+        with:
+          name: abstract-pdf
+          path: out/abstract.pdf
 
       - name: Build diff against base branch
+        if: github.event_name == 'pull_request'
         env:
           BASE_REF: ${{ github.base_ref }}
         run: |
@@ -104,19 +70,21 @@ jobs:
           scripts/latexdiff.sh "$BASE_REF"
 
       - uses: actions/upload-artifact@v7
-        id: upload-thesis
+        if: github.event_name == 'pull_request'
+        id: upload-thesis-diff
         with:
           name: thesis-diff-pdf
           path: out/thesis-diff${{ github.base_ref }}.pdf
 
       - uses: actions/upload-artifact@v7
-        id: upload-abstract
+        if: github.event_name == 'pull_request'
+        id: upload-abstract-diff
         with:
           name: abstract-diff-pdf
           path: out/abstract-diff${{ github.base_ref }}.pdf
 
   comment:
-    needs: [build-thesis, build-abstract, build-diff]
+    needs: build
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     permissions:
@@ -140,9 +108,9 @@ jobs:
 
             | Document | Link |
             |----------|------|
-            | Thesis   | [Download](${{ needs.build-thesis.outputs.artifact-url }}) |
-            | Abstract | [Download](${{ needs.build-abstract.outputs.artifact-url }}) |
-            | Thesis (diff vs `${{ github.base_ref }}`) | [Download](${{ needs.build-diff.outputs.thesis-url }}) |
-            | Abstract (diff vs `${{ github.base_ref }}`) | [Download](${{ needs.build-diff.outputs.abstract-url }}) |
+            | Thesis   | [Download](${{ needs.build.outputs.thesis-url }}) |
+            | Abstract | [Download](${{ needs.build.outputs.abstract-url }}) |
+            | Thesis (diff vs `${{ github.base_ref }}`) | [Download](${{ needs.build.outputs.thesis-diff-url }}) |
+            | Abstract (diff vs `${{ github.base_ref }}`) | [Download](${{ needs.build.outputs.abstract-diff-url }}) |
 
             > ⚠️ Artifacts are retained for 90 days.
