@@ -9,7 +9,7 @@
     // Node ランタイム: mise の node/pnpm と package.json の packageManager を 1 PR に集約
     {
       matchManagers: ["mise"],
-      matchPackageNames: ["node", "github:pnpm/pnpm"],
+      matchPackageNames: ["node", "pnpm"],
       groupName: "node runtime",
     },
     {
