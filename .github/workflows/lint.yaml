@@ -31,7 +31,7 @@ jobs:
               -reporter=${{ github.event_name == 'pull_request' && 'github-pr-review' || 'github-check' }} \
               -fail-level=any
 
-  pre-commit:
+  hk:
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/tpu-kanglabs/texlive:latest
@@ -39,5 +39,11 @@ jobs:
       - uses: actions/checkout@v7
       - name: Configure git safe directory
         run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
-      - name: Run pre-commit
-        run: mise pre-commit
+      - name: Run hk
+        env:
+          # textlint runs in its own job above (with reviewdog annotations).
+          HK_SKIP_STEPS: textlint
+        run: |
+          # `mise install` also runs the `setup` task (pnpm i / uv sync).
+          mise install
+          mise run check

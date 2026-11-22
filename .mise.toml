@@ -2,6 +2,36 @@
 node = "26.13.1"
 pnpm = "12.18.0"
 uv = "0.13.8"
+hk = "2.5.0"
+jq = "1.8.2"
+taplo = "0.10.0"
+yamlfmt = "0.21.0"
+actionlint = "1.7.12"
+shellcheck = "0.11.0"
+shfmt = "3.14.1"
+hadolint = "2.15.1"
+
+[env]
+# Put project-local binaries on PATH so hk (and git hooks) can call them directly.
+_.path = ["node_modules/.bin", ".venv/bin"]
+
+[settings]
+# [hooks] is still experimental in mise.
+experimental = true
+
+[hooks]
+# Runs after every `mise install`, so cloning + `mise install` is the whole setup.
+postinstall = { task = "setup" }
+
+[tasks.setup]
+description = "Install dependencies and Git hooks (runs after `mise install`)"
+run = """
+set -e
+[ -f hk.pkl ] || exit 0   # no-op: the Docker image loads this file as the global config
+pnpm i --frozen-lockfile
+uv sync
+[ -n "${CI:-}" ] || hk install --mise
+"""
 
 [tasks.abstract]
 description = "Compile the abstract"
@@ -37,26 +67,10 @@ run = "scripts/latexdiff.sh HEAD"
 description = "Build diff PDFs against main"
 run = "scripts/latexdiff.sh main"
 
-[tasks."format:latex"]
-run = "latexindent -c out -s --overwrite *.tex chapters/*.tex"
-[tasks."format:py"]
-run = "uv run ruff format"
-[tasks.format]
-depends = ["format:*"]
+[tasks.check]
+description = "Run all hk checks (add `-- --step <name>` to run one step)"
+run = "hk check --all"
 
-[tasks."format-check:latex"]
-run = "latexindent -k -s -c out *.tex chapters/*.tex"
-[tasks."format-check:py"]
-run = "uv run ruff format --check"
-[tasks."format-check"]
-depends = ["format-check:*"]
-
-[tasks."lint:docs"]
-run = "pnpm lint"
-[tasks."lint:py"]
-run = ["uv run ruff check", "uv run pyrefly check --summarize-errors"]
-[tasks.lint]
-depends = ["lint:*"]
-
-[tasks."pre-commit"]
-run = "uv run pre-commit run --all-files"
+[tasks.fix]
+description = "Apply all hk auto-fixes (add `-- --step <name>` to run one step)"
+run = "hk fix --all"

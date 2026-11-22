@@ -1,0 +1,102 @@
+amends "package://github.com/jdx/hk/releases/download/v2.5.0/hk@2.5.0#/Config.pkl"
+import "package://github.com/jdx/hk/releases/download/v2.5.0/hk@2.5.0#/Builtins.pkl"
+
+// Generated / vendored files that no hook should touch.
+exclude = List("out", "node_modules", ".pnpm-store", ".venv", "pnpm-lock.yaml", "uv.lock")
+
+// Report every failing step at once instead of stopping at the first one.
+fail_fast = false
+
+local linters = new Mapping<String, Step> {
+  // ---- general file hygiene -------------------------------------------------
+  ["check_added_large_files"] = (Builtins.check_added_large_files) {
+    // Figures (PDF/PNG) routinely exceed the 500KB default; keep a sane ceiling instead.
+    check = "hk util check-added-large-files --maxkb 2048 {{files}}"
+  }
+  ["check_case_conflict"] = Builtins.check_case_conflict
+  ["check_merge_conflict"] = Builtins.check_merge_conflict
+  ["check_symlinks"] = Builtins.check_symlinks
+  ["detect_private_key"] = Builtins.detect_private_key
+  ["check_executables_have_shebangs"] = Builtins.check_executables_have_shebangs
+  ["check_shebang_scripts_are_executable"] = (Builtins.check_shebang_scripts_are_executable) {
+    // .latexmkrc is a Perl config read by latexmk, not an executable script.
+    exclude = List(".latexmkrc")
+  }
+  ["mixed_line_ending"] = Builtins.mixed_line_ending
+  ["byte_order_marker"] = Builtins.byte_order_marker
+  ["newlines"] = Builtins.newlines
+  ["trailing_whitespace"] = Builtins.trailing_whitespace
+
+  // ---- syntax / schema ------------------------------------------------------
+  ["check_json"] = new Step {
+    glob = List("*.json")
+    check = "jq empty {{files}}"
+  }
+  ["check_toml"] = Builtins.taplo
+  // yamlfmt fails on invalid YAML, so it covers syntax checking as well.
+  ["yamlfmt"] = (Builtins.yamlfmt) {
+    // .latexindent.yaml is a vendored upstream config (MIT); keep it verbatim.
+    exclude = List(".latexindent.yaml")
+  }
+  ["actionlint"] = Builtins.actionlint
+  ["shellcheck"] = Builtins.shellcheck
+  ["shfmt"] = Builtins.shfmt // indentation comes from .editorconfig
+  ["hadolint"] = (Builtins.hadolint) {
+    // Pinning apt packages (DL3008) is impractical on the texlive base image.
+    check = "hadolint --failure-threshold error {{files}}"
+  }
+  ["hk_validate"] = new Step {
+    glob = List("hk.pkl")
+    check = "hk validate"
+  }
+
+  // ---- python ---------------------------------------------------------------
+  // ruff / pyrefly come from .venv/bin (see [env] in .mise.toml).
+  ["ruff"] = Builtins.ruff
+  ["ruff_format"] = Builtins.ruff_format
+  ["pyrefly"] = new Step {
+    glob = List("*.py", "*.ipynb", "pyproject.toml")
+    check = "pyrefly check"
+    // Pyrefly analyses the whole project, so never run it concurrently with other steps.
+    exclusive = true
+  }
+  ["uv_lock"] = new Step {
+    glob = List("pyproject.toml", "uv.lock")
+    check = "uv lock --check"
+    fix = "uv lock"
+  }
+
+  // ---- latex ----------------------------------------------------------------
+  ["latexindent"] = new Step {
+    glob = List("*.tex")
+    check = "latexindent -k -s -c out {{files}}"
+    fix = "latexindent -s -c out --overwrite {{files}}"
+  }
+
+  // ---- prose ----------------------------------------------------------------
+  ["textlint"] = (Builtins.textlint) {
+    glob = List("*.md", "*.tex")
+    exclude = List("CLAUDE.md", ".claude/**")
+    // Both tools rewrite *.tex; make sure textlint sees the indented result.
+    depends = List("latexindent")
+  }
+}
+
+hooks {
+  ["pre-commit"] {
+    fix = true
+    stage = true
+    stash = "git"
+    steps = linters
+  }
+  ["pre-push"] {
+    steps = linters
+  }
+  ["check"] {
+    steps = linters
+  }
+  ["fix"] {
+    fix = true
+    steps = linters
+  }
+}
