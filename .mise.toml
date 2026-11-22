@@ -27,7 +27,7 @@ postinstall = { task = "setup" }
 description = "Install dependencies and Git hooks (runs after `mise install`)"
 run = """
 set -e
-[ -f hk.pkl ] || exit 0   # no-op: the Docker image loads this file as the global config
+[ -f hk.pkl ] || exit 0   # no-op in the Docker image build (only .mise.toml is copied)
 pnpm i --frozen-lockfile
 uv sync
 [ -n "${CI:-}" ] || hk install --mise

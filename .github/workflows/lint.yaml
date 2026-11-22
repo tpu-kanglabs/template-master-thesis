@@ -35,10 +35,10 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/tpu-kanglabs/texlive:latest
+      # Run as the runner's uid (not root) so workspace files stay owned by the runner.
+      options: --user 1001
     steps:
       - uses: actions/checkout@v7
-      - name: Configure git safe directory
-        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - name: Run hk
         env:
           # textlint runs in its own job above (with reviewdog annotations).
