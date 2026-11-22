@@ -118,42 +118,20 @@ mise diff:main
 
 Node.jsとPython（[uv](https://docs.astral.sh/uv/)）を使用できる．
 
-### Linter
+### Lint / Format
 
-コードのLintに加えて，[textlint](https://textlint.org/)による文章校正もサポートしている．
-
-```bash
-# 文章校正
-mise lint:docs
-# Pythonコード
-mise lint:py
-# 両方
-mise lint
-```
-
-### Formatter
-
-コードだけでなく，latexindentを使用した`*.tex`ファイルのフォーマットをサポートしている．
+コード・文章の検査と整形機能を整備している。これらは[hk](https://hk.jdx.dev/)で一括実行できる．
 
 ```bash
-# latex
-mise format:latex
-# Pythonコード
-mise format:py
-# 両方
-mise format
+# チェックのみ
+mise check
+# 自動修正
+mise fix
+# 特定のステップだけ実行（例：文章校正）
+mise check -- --step textlint
 ```
 
-### pre-commit
-
-[pre-commit](https://pre-commit.com/)を使用して，コミット前に自動でLintやFormatterを実行できる．
-
-```bash
-# hookの登録
-uv run pre-commit install
-# 手動実行
-mise pre-commit
-```
+コミット時の検査を一時的にスキップする場合は`HK_SKIP_STEPS=textlint git commit`や`git commit --no-verify`を使う．
 
 ## Dockerサポート
 
