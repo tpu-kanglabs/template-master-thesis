@@ -6,7 +6,7 @@ rules:
   - expected: ニューラルネットワーク
     patterns:
       - ニューラル・ネットワーク
-      - ニューラルネットワーク  # 同形は無視されるが念のため
+      - ニューラルネットワーク # 同形は無視されるが念のため
 
   - expected: 畳み込みニューラルネットワーク
     patterns:
@@ -202,7 +202,7 @@ rules:
   - expected: アクセラレータ
     patterns:
       - アクセラレーター
-      - アクセラレータ  # already correct
+      - アクセラレータ # already correct
 
   - expected: エミュレータ
     patterns:
@@ -247,17 +247,17 @@ rules:
   - expected: ファイルシステム
     patterns:
       - ファイル・システム
-      - ファイルシステム  # already correct
+      - ファイルシステム # already correct
 
   - expected: オペレーティングシステム
     patterns:
       - オペレーティング・システム
-      - オペレーティングシステム  # already correct
+      - オペレーティングシステム # already correct
 
   - expected: フレームワーク
     patterns:
       - フレーム・ワーク
-      - フレームワーク  # already correct
+      - フレームワーク # already correct
 
   - expected: ネットワーク
     patterns:

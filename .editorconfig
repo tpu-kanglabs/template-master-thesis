@@ -1,0 +1,6 @@
+root = true
+
+# shfmt reads this file (hk runs it with --apply-ignore).
+[*.sh]
+indent_style = space
+indent_size = 4
