@@ -67,27 +67,10 @@ run = "scripts/latexdiff.sh HEAD"
 description = "Build diff PDFs against main"
 run = "scripts/latexdiff.sh main"
 
-[tasks."format:latex"]
-run = "latexindent -c out -s --overwrite *.tex chapters/*.tex"
-[tasks."format:py"]
-run = "uv run ruff format"
-[tasks.format]
-depends = ["format:*"]
-
-[tasks."format-check:latex"]
-run = "latexindent -k -s -c out *.tex chapters/*.tex"
-[tasks."format-check:py"]
-run = "uv run ruff format --check"
-[tasks."format-check"]
-depends = ["format-check:*"]
-
-[tasks."lint:docs"]
-run = "pnpm lint"
-[tasks."lint:py"]
-run = ["uv run ruff check", "uv run pyrefly check --summarize-errors"]
-[tasks.lint]
-depends = ["lint:*"]
-
-[tasks."pre-commit"]
-description = "Run all hk checks"
+[tasks.check]
+description = "Run all hk checks (add `-- --step <name>` to run one step)"
 run = "hk check --all"
+
+[tasks.fix]
+description = "Apply all hk auto-fixes (add `-- --step <name>` to run one step)"
+run = "hk fix --all"
