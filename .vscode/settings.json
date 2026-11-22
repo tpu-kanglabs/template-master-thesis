@@ -31,7 +31,9 @@
     ".pnpm-store": true,
     ".venv": true,
     "*cache": true,
-    "uv.lock": true
+    "uv.lock": true,
+    ".editorconfig": true,
+    ".yamlfmt.yaml": true
   },
   "editor.formatOnSave": true,
   "[latex]": {
