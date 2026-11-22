@@ -3,7 +3,7 @@
   "image": "ghcr.io/tpu-kanglabs/texlive:latest",
   "remoteUser": "texlive",
   "postCreateCommand": "mise trust",
-  "postStartCommand": "pnpm i --frozen-lockfile && uv sync",
+  "postStartCommand": "mise install",
   "customizations": {
     "vscode": {
       "extensions": [

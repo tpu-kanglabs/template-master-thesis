@@ -15,6 +15,24 @@ hadolint = "2.15.1"
 # Put project-local binaries on PATH so hk (and git hooks) can call them directly.
 _.path = ["node_modules/.bin", ".venv/bin"]
 
+[settings]
+# [hooks] is still experimental in mise.
+experimental = true
+
+[hooks]
+# Runs after every `mise install`, so cloning + `mise install` is the whole setup.
+postinstall = { task = "setup" }
+
+[tasks.setup]
+description = "Install dependencies and Git hooks (runs after `mise install`)"
+run = """
+set -e
+[ -f hk.pkl ] || exit 0   # no-op: the Docker image loads this file as the global config
+pnpm i --frozen-lockfile
+uv sync
+[ -n "${CI:-}" ] || hk install --mise
+"""
+
 [tasks.abstract]
 description = "Compile the abstract"
 run = "latexmk abstract.tex"
