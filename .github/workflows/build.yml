@@ -32,6 +32,8 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/tpu-kanglabs/texlive:latest
+      # Run as the runner's uid (not root) so workspace files stay owned by the runner.
+      options: --user 1001
     outputs:
       thesis-url: ${{ steps.upload-thesis.outputs.artifact-url }}
       abstract-url: ${{ steps.upload-abstract.outputs.artifact-url }}
@@ -65,7 +67,6 @@ jobs:
         env:
           BASE_REF: ${{ github.base_ref }}
         run: |
-          git config --global --add safe.directory "$GITHUB_WORKSPACE"
           git fetch origin "$BASE_REF:$BASE_REF"
           scripts/latexdiff.sh "$BASE_REF"
 
